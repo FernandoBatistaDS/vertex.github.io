@@ -451,19 +451,19 @@ elif page == "Guia de Implementação":
     
     
             
-try:
-    # Carregar o PDF do GitHub (ou usar outro método para obter os bytes do PDF)
-    pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
-    st.subheader("Visualizar Documento")
-    if pdf_bytes:
-        st.markdown(display_pdf(pdf_bytes), unsafe_allow_html=True)
-    else:
-        st.info("PDF indisponível no momento.")
-except Exception as e:
-    st.error(f"Erro ao processar o guia de implementação: {e}")
-    st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
+    try:
+        # Carregar o PDF do GitHub (ou usar outro método para obter os bytes do PDF)
+        pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
+        st.subheader("Visualizar Documento")
+        if pdf_bytes:
+            st.markdown(display_pdf(pdf_bytes), unsafe_allow_html=True)
+        else:
+            st.info("PDF indisponível no momento.")
+        except Exception as e:
+            st.error(f"Erro ao processar o guia de implementação: {e}")
+            st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
 
-st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Carregar o PDF do GitHub
     with st.spinner("Carregando guia de implementação..."):
@@ -486,7 +486,7 @@ st.markdown('</div>', unsafe_allow_html=True)
                      mime="application/pdf"
                  )
 
-st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Adiciona o footer no final (fora da content-wrapper)
 add_footer()
