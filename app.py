@@ -214,9 +214,10 @@ st.markdown(
     """
     <div class="header">
         <div class="header">
-        <div class="vertex-logo">
-            <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" width="36" height="36" alt="Logo VertexTennis">
-            <span class="logo-text">VertexTennis</span>
+            <div class="vertex-logo">
+                <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" width="36" height="36" alt="Logo VertexTennis">
+                <span class="logo-text">VertexTennis</span>
+            </div>
         </div>
     </div>
     """,
@@ -277,7 +278,7 @@ def add_footer():
         unsafe_allow_html=True
     )
 
-# Page content with content-wrapper div for better footer positioning
+# Page content com content-wrapper para melhor posicionamento do footer
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
 if page == "Página Inicial":
@@ -286,7 +287,6 @@ if page == "Página Inicial":
     
     # Vídeo incorporado
     st.subheader("Vídeo de Apresentação")
-    
     st.markdown(
         """
         <div class="video-container">
@@ -300,105 +300,103 @@ if page == "Página Inicial":
         """, 
         unsafe_allow_html=True
     )
-
+    
     st.markdown('<hr>', unsafe_allow_html=True)
-
+    
     # Equipe envolvida
     st.subheader("Insight Hunters")
-    
     st.markdown(
-    """
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .team-member {
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            background: #2D2D2D; 
-            color: #ffffff;
-        }
-        .team-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .team-member h4 {
-            margin: 10px 0 5px;
-        }
-        .team-member a {
-            text-decoration: none;
-            color: #0077b5; /* Azul do LinkedIn */
-        }
-    </style>
+        """
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                margin-top: 20px;
+            }
+            .team-member {
+                border: 1px solid #ccc;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                background: #2D2D2D; 
+                color: #ffffff;
+            }
+            .team-member img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .team-member h4 {
+                margin: 10px 0 5px;
+            }
+            .team-member a {
+                text-decoration: none;
+                color: #0077b5; /* Azul do LinkedIn */
+            }
+        </style>
+        
+        <div class="grid-container">
+            <div class="team-member">
+                <img src="https://lh3.googleusercontent.com/a/AGNmyxZ6qSVDtB856uLoGdIQJoPKY712zFFxXm9oj-xZ1g=s96-c" alt="Gabriel Penha">
+                <h4>Gabriel Penha</h4>
+                <p><a href="https://www.linkedin.com/in/gabriel4210" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (71) 99210-9164</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 2">
+                <h4>Nome 2</h4>
+                <p><a href="https://www.linkedin.com/in/nome2" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 3">
+                <h4>Nome 3</h4>
+                <p><a href="https://www.linkedin.com/in/nome3" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 4">
+                <h4>Nome 4</h4>
+                <p><a href="https://www.linkedin.com/in/nome4" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 5">
+                <h4>Nome 5</h4>
+                <p><a href="https://www.linkedin.com/in/nome5" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 6">
+                <h4>Nome 6</h4>
+                <p><a href="https://www.linkedin.com/in/nome6" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 7">
+                <h4>Nome 7</h4>
+                <p><a href="https://www.linkedin.com/in/nome7" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Nome 8">
+                <h4>Nome 8</h4>
+                <p><a href="https://www.linkedin.com/in/nome8" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (00) 00000-0000</p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-    <div class="grid-container">
-        <div class="team-member">
-            <img src="https://lh3.googleusercontent.com/a/AGNmyxZ6qSVDtB856uLoGdIQJoPKY712zFFxXm9oj-xZ1g=s96-c" alt="Gabriel Penha">
-            <h4>Gabriel Penha</h4>
-            <p><a href="https://www.linkedin.com/in/gabriel4210" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (71) 99210-9164</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 2">
-            <h4>Nome 2</h4>
-            <p><a href="https://www.linkedin.com/in/nome2" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 3">
-            <h4>Nome 3</h4>
-            <p><a href="https://www.linkedin.com/in/nome3" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 4">
-            <h4>Nome 4</h4>
-            <p><a href="https://www.linkedin.com/in/nome4" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 5">
-            <h4>Nome 5</h4>
-            <p><a href="https://www.linkedin.com/in/nome5" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 6">
-            <h4>Nome 6</h4>
-            <p><a href="https://www.linkedin.com/in/nome6" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 7">
-            <h4>Nome 7</h4>
-            <p><a href="https://www.linkedin.com/in/nome7" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 8">
-            <h4>Nome 8</h4>
-            <p><a href="https://www.linkedin.com/in/nome8" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-    
 elif page == "Power BI":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Relatório Power BI")
     
     # Link público do Power BI
     st.subheader("Dashboard Interativo")
-    
     st.markdown(
         """
         <div style="background-color: #2D2D2D; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -414,7 +412,6 @@ elif page == "Power BI":
     
     # Análises extraídas
     st.subheader("Análises Extraídas")
-    
     st.markdown(
         """
         <div class="analysis-card">
@@ -439,54 +436,49 @@ elif page == "Power BI":
         """,
         unsafe_allow_html=True
     )
-    
+
 elif page == "Guia de Implementação":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Guia de Implementação do Power BI")
     
     # Parâmetros do repositório GitHub
     repo_owner = "Gabriel4210"  # Substitua pelo nome do usuário/organização real
-    repo_name = "Vertex_App"      # Substitua pelo nome do repositório real
+    repo_name = "Vertex_App"     # Substitua pelo nome do repositório real
     pdf_path = "guia_implementacao_power_bi.pdf"  # Caminho para o PDF no repositório
     
-    
-            
+    # Exibir PDF embutido
     try:
-        # Carregar o PDF do GitHub (ou usar outro método para obter os bytes do PDF)
         pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
         st.subheader("Visualizar Documento")
         if pdf_bytes:
             st.markdown(display_pdf(pdf_bytes), unsafe_allow_html=True)
         else:
             st.info("PDF indisponível no momento.")
-        except Exception as e:
-            st.error(f"Erro ao processar o guia de implementação: {e}")
-            st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
-
+    except Exception as e:
+        st.error(f"Erro ao processar o guia de implementação: {e}")
+        st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
+    
     st.markdown('</div>', unsafe_allow_html=True)
-
-# Carregar o PDF do GitHub
+    
+    # Carregar o PDF do GitHub com spinner para download
     with st.spinner("Carregando guia de implementação..."):
         try:
-            # Simulando o carregamento de um PDF (em produção, essa linha seria substituída pelo código real)
             pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
-            
-            # Como não temos acesso ao repositório real, vamos usar um arquivo local como fallback
-            # Em produção, você usaria a linha comentada acima
-            
-            # Download do documento
             st.subheader("Download do Documento Completo")
-            
-            # Em produção, use o PDF carregado do GitHub
             if pdf_bytes:
-                 st.download_button(
-                     label="Baixar Guia Completo em PDF",
-                     data=pdf_bytes,
-                     file_name="guia_implementacao_power_bi.pdf",
-                     mime="application/pdf"
-                 )
-
+                st.download_button(
+                    label="Baixar Guia Completo em PDF",
+                    data=pdf_bytes,
+                    file_name="guia_implementacao_power_bi.pdf",
+                    mime="application/pdf"
+                )
+        except Exception as e:
+            st.error(f"Erro ao carregar o PDF: {e}")
+    
     st.markdown('</div>', unsafe_allow_html=True)
+
+# Fechar a div content-wrapper
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Adiciona o footer no final (fora da content-wrapper)
 add_footer()
