@@ -116,6 +116,21 @@ st.markdown(
         border-radius: 8px;
         margin: 20px 0;
     }
+    
+    /* Code blocks */
+    pre {
+        background-color: #1A1A1A;
+        border-radius: 4px;
+        padding: 15px;
+        overflow-x: auto;
+        margin: 15px 0;
+        border: 1px solid var(--card-border);
+    }
+    
+    code {
+        font-family: 'Courier New', monospace;
+        color: #E0E0E0;
+    }
 
     /* Download button */
     .download-btn {
@@ -290,45 +305,39 @@ elif page == "Guia de Implementação":
     st.title("Guia de Implementação do Power BI")
     
     # Guia em markdown
-    st.markdown(
-        """
-        <div class="guide-section">
-            <h3>Passo a Passo para Implementação</h3>
-            
-            <h4>1. Preparação dos Dados</h4>
-            <ul>
-                <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
-                <li>Realize a limpeza e transformação dos dados no Power Query</li>
-                <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
-            </ul>
-            
-            <h4>2. Criação do Relatório</h4>
-            <ul>
-                <li>Desenvolva visualizações para análise de vendas por produto</li>
-                <li>Implemente filtros interativos por região e período</li>
-                <li>Crie dashboards com KPIs de desempenho comercial</li>
-                <li>Configure drill-down para análises detalhadas</li>
-            </ul>
-            
-            <h4>3. Publicação e Compartilhamento</h4>
-            <ul>
-                <li>Publique o relatório no serviço Power BI</li>
-                <li>Configure atualizações automáticas dos dados</li>
-                <li>Defina permissões de acesso para usuários</li>
-                <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
-            </ul>
-            
-            <h4>4. Manutenção e Atualização</h4>
-            <ul>
-                <li>Estabeleça rotina de verificação da qualidade dos dados</li>
-                <li>Implemente alertas para métricas críticas</li>
-                <li>Atualize visualizações conforme feedback dos usuários</li>
-                <li>Documente alterações e melhorias implementadas</li>
-            </ul>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("## Passo a Passo para Implementação")
+    
+    # Usando o st.code para exibir o código HTML corretamente
+    st.code("""<h1>1. Preparação dos Dados</h1>
+<ul>
+    <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
+    <li>Realize a limpeza e transformação dos dados no Power Query</li>
+    <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
+</ul>
+
+<h2>2. Criação do Relatório</h2>
+<ul>
+    <li>Desenvolva visualizações para análise de vendas por produto</li>
+    <li>Implemente filtros interativos por região e período</li>
+    <li>Crie dashboards com KPIs de desempenho comercial</li>
+    <li>Configure drill-down para análises detalhadas</li>
+</ul>
+
+<h3>3. Publicação e Compartilhamento</h3>
+<ul>
+    <li>Publique o relatório no serviço Power BI</li>
+    <li>Configure atualizações automáticas dos dados</li>
+    <li>Defina permissões de acesso para usuários</li>
+    <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
+</ul>
+
+<h4>4. Manutenção e Atualização</h4>
+<ul>
+    <li>Estabeleça rotina de verificação da qualidade dos dados</li>
+    <li>Implemente alertas para métricas críticas</li>
+    <li>Atualize visualizações conforme feedback dos usuários</li>
+    <li>Documente alterações e melhorias implementadas</li>
+</ul>""", language="html")
     
     st.markdown("<hr>", unsafe_allow_html=True)
     
