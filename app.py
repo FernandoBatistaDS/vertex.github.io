@@ -230,7 +230,7 @@ page = st.sidebar.radio("", ("Página Inicial", "Power BI", "Guia de Implementa�
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
     """Carrega PDF diretamente do GitHub"""
-    url = f"https://raw.githubusercontent.com/{Gabriel4210}/{Vertex_App}/{main}/{guia_implementacao_power_bi.pdf}"
+    url = f"https://raw.githubusercontent.com/{repo_owner}/{repo_name}/{branch}/{path_to_pdf}"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raise an exception for bad status codes
