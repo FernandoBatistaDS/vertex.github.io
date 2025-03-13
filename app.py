@@ -284,31 +284,6 @@ if page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Vertex - Velocidade e Qualidade nas Decisões")
     
-    # Equipe envolvida
-    st.subheader("Insight Hunters")
-    
-    st.markdown(
-        """
-        <div class="team-member">
-            <h4>Gabriel Penha</h4>
-            <p>Desenvolvedor Front-end</p>
-        </div>
-        
-        <div class="team-member">
-            <h4>Carol</h4>
-            <p>Analista de Dados</p>
-        </div>
-        
-        <div class="team-member">
-            <h4>Wendel</h4>
-            <p>UX/UI Designer</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    
-    st.markdown('<hr>', unsafe_allow_html=True)
-    
     # Vídeo incorporado
     st.subheader("Vídeo de Apresentação")
     
@@ -325,6 +300,96 @@ if page == "Página Inicial":
         """, 
         unsafe_allow_html=True
     )
+
+    st.markdown('<hr>', unsafe_allow_html=True)
+
+    # Equipe envolvida
+    st.subheader("Insight Hunters")
+    
+    st.markdown(
+    """
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .team-member {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .team-member h4 {
+            margin: 10px 0 5px;
+        }
+        .team-member a {
+            text-decoration: none;
+            color: #0077b5; /* LinkedIn Blue */
+        }
+    </style>
+
+    <div class="grid-container">
+        <div class="team-member">
+            <img src="https://lh3.googleusercontent.com/a/AGNmyxZ6qSVDtB856uLoGdIQJoPKY712zFFxXm9oj-xZ1g=s96-c" alt="Gabriel Penha">
+            <h4>Gabriel Penha</h4>
+            <p><a href="https://www.linkedin.com/in/gabriel4210" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (71) 99210-9164</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 2">
+            <h4>Nome 2</h4>
+            <p><a href="https://www.linkedin.com/in/nome2" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 3">
+            <h4>Nome 3</h4>
+            <p><a href="https://www.linkedin.com/in/nome3" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 4">
+            <h4>Nome 4</h4>
+            <p><a href="https://www.linkedin.com/in/nome4" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 5">
+            <h4>Nome 5</h4>
+            <p><a href="https://www.linkedin.com/in/nome5" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 6">
+            <h4>Nome 6</h4>
+            <p><a href="https://www.linkedin.com/in/nome6" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 7">
+            <h4>Nome 7</h4>
+            <p><a href="https://www.linkedin.com/in/nome7" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Nome 8">
+            <h4>Nome 8</h4>
+            <p><a href="https://www.linkedin.com/in/nome8" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (00) 00000-0000</p>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
     
 elif page == "Power BI":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
@@ -394,44 +459,6 @@ elif page == "Guia de Implementação":
             
             # Apenas para fins de demonstração - em produção, use a função load_github_pdf
             st.info("O guia está sendo carregado do repositório GitHub: vertextennis/app-vertex")
-            
-            # Exibir uma prévia do guia
-            st.subheader("Prévia do Guia")
-            
-            st.markdown("""
-            <div class="guide-section">
-                <h3>1. Preparação dos Dados</h3>
-                <ul>
-                    <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
-                    <li>Realize a limpeza e transformação dos dados no Power Query</li>
-                    <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
-                </ul>
-                
-                <h3>2. Criação do Relatório</h3>
-                <ul>
-                    <li>Desenvolva visualizações para análise de vendas por produto</li>
-                    <li>Implemente filtros interativos por região e período</li>
-                    <li>Crie dashboards com KPIs de desempenho comercial</li>
-                    <li>Configure drill-down para análises detalhadas</li>
-                </ul>
-                
-                <h3>3. Publicação e Compartilhamento</h3>
-                <ul>
-                    <li>Publique o relatório no serviço Power BI</li>
-                    <li>Configure atualizações automáticas dos dados</li>
-                    <li>Defina permissões de acesso para usuários</li>
-                    <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
-                </ul>
-                
-                <h3>4. Manutenção e Atualização</h3>
-                <ul>
-                    <li>Estabeleça rotina de verificação da qualidade dos dados</li>
-                    <li>Implemente alertas para métricas críticas</li>
-                    <li>Atualize visualizações conforme feedback dos usuários</li>
-                    <li>Documente alterações e melhorias implementadas</li>
-                </ul>
-            </div>
-            """, unsafe_allow_html=True)
             
             # Download do documento
             st.subheader("Download do Documento Completo")
