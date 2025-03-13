@@ -315,16 +315,16 @@ if page == "Página Inicial":
             """
             **Bem-vindo ao Tour do App!**  
             Explore as seções abaixo:
-            - **Página Inicial:** História, visão e a motivação por trás da Vertex Tennis.
-            - **Dashboard Power BI:** Visualização interativa dos dados e análises em tempo real.
-            - **Guia de Implementação:** Documentação completa para replicar os insights.
+            - **Página Inicial:** Resumo e apresentação geral da nova ferramenta.
+            - **Dashboard Power BI:** Visualização interativa dos dados e algumas das análises provenientes dele.
+            - **Guia de Implementação:** Documentação completa para impulsionar a adoção da solução e descrever os processos de governança.
             
-            Navegue por cada seção e descubra como nossos dados podem transformar seu negócio!
+            Navegue por cada seção e descubra como seus dados podem impulsionar seu negócio!
             """
         )
     
     # Vídeo incorporado
-    st.subheader("Vídeo de Apresentação")
+    st.subheader("Resumo e Apresentação")
     st.markdown(
         """
         <div class="video-container">
@@ -342,7 +342,7 @@ if page == "Página Inicial":
     st.markdown('<hr>', unsafe_allow_html=True)
     
     # Seção de Equipe Insight Hunters
-    st.subheader("Insight Hunters")
+    st.subheader("Equipe da Insight Hunters")
     st.markdown(
         """
         <style>
