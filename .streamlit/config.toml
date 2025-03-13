@@ -3,4 +3,4 @@ primaryColor = "#0B9E84"           # Vertex Brand Green
 backgroundColor = "#1E1E1E"        # BG Primary
 secondaryBackgroundColor = "#2D2D2D"  # BG Secondary
 textColor = "#FFFFFF"              # Text Primary
-font = "sans serif"
+font = "Montserrat"
