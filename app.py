@@ -213,12 +213,9 @@ st.markdown(
 st.markdown(
     """
     <div class="header">
+        <div class="header">
         <div class="vertex-logo">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg">
-                <path d="M8 8L28 28M8 28L28 8" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
-                <path d="M18 5C14.9 5 12.1 5 9.5 5C6.9 5 5 6.9 5 9.5C5 12.1 5 14.9 5 18" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
-                <path d="M18 31C21.1 31 23.9 31 26.5 31C29.1 31 31 29.1 31 26.5C31 23.9 31 21.1 31 18" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
-            </svg>
+            <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" width="36" height="36" alt="Logo VertexTennis">
             <span class="logo-text">VertexTennis</span>
         </div>
     </div>
