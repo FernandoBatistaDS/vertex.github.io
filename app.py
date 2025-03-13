@@ -320,7 +320,8 @@ if page == "Página Inicial":
             padding: 15px;
             border-radius: 8px;
             text-align: center;
-            background: #f9f9f9;
+            background: #ffffff; /* Cor de fundo branca */
+            color: #000000; /* Cor do texto preta */
         }
         .team-member img {
             width: 100px;
@@ -333,7 +334,7 @@ if page == "Página Inicial":
         }
         .team-member a {
             text-decoration: none;
-            color: #0077b5; /* LinkedIn Blue */
+            color: #0077b5; /* Azul do LinkedIn */
         }
     </style>
 
