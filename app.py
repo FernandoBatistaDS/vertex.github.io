@@ -257,8 +257,22 @@ def display_pdf(pdf_bytes):
 def add_footer():
     st.markdown(
         """
-        <div class="footer">
-            <div class="footer-grid">
+        <div class="footer" style="
+            background: linear-gradient(135deg, var(--vertex-neon-green), #c0ff77);
+            color: #000;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        ">
+            <div class="footer-grid" style="
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+                padding: 0 1rem;
+            ">
                 <div class="footer-col">
                     <h4>VertexTennis</h4>
                     <p>Soluções inovadoras para tênis</p>
@@ -272,10 +286,16 @@ def add_footer():
                 
                 <div class="footer-col">
                     <h4>Sobre nós</h4>
-                    <ul class="footer-list">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Contato</a></li>
-                        <li><a href="#">Blog</a></li>
+                    <ul class="footer-list" style="list-style-type: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;">
+                            <a href="#" style="color: #000; text-decoration: none;">Quem somos</a>
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <a href="#" style="color: #000; text-decoration: none;">Contato</a>
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <a href="#" style="color: #000; text-decoration: none;">Blog</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -283,6 +303,7 @@ def add_footer():
         """,
         unsafe_allow_html=True
     )
+
 
 # Page content com content-wrapper para melhor posicionamento do footer
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
