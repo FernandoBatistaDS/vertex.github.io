@@ -276,20 +276,9 @@ def add_footer():
                     <h4>VertexTennis</h4>
                     <p>Soluções inovadoras para tênis</p>
                 </div>
-                
                 <div class="footer-col">
-                    <h4>Contato</h4>
-                    <p>contato@vertextennis.com</p>
-                    <p>+55 11 5555-5555</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Sobre nós</h4>
-                    <ul class="footer-list">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Contato</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+                    <p>Na Vertex Tennis, tudo começa com o compromisso de entender e atender as necessidades dos nossos clientes e parceiros.</p>
+                    <p>Desenvolvemos nossos produtos com um foco absoluto na qualidade, tecnologia e acessibilidade, criando soluções que alavancam negócios e ampliam o alcance do tênis no Brasil.</p>
                 </div>
             </div>
         </div>
