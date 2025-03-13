@@ -463,7 +463,7 @@ except Exception as e:
     st.error(f"Erro ao processar o guia de implementação: {e}")
     st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
 
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Carregar o PDF do GitHub
     with st.spinner("Carregando guia de implementação..."):
@@ -485,6 +485,8 @@ except Exception as e:
                      file_name="guia_implementacao_power_bi.pdf",
                      mime="application/pdf"
                  )
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Adiciona o footer no final (fora da content-wrapper)
 add_footer()
