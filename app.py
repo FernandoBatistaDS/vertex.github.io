@@ -4,20 +4,20 @@ import io
 import base64
 from pathlib import Path
 
-# App configuration
+# Configuração do app
 st.set_page_config(page_title="App VertexTennis", layout="wide")
 
-# CSS com o estilo da VertexTennis atualizado conforme o Guia de Identidade Visual
+# CSS atualizado conforme o Guia de Identidade Visual da Vertex
 st.markdown(
     """
     <style>
-    /* Variáveis de cores e fontes da identidade visual */
+    /* Variáveis de cores, fontes e identidade visual */
     :root {
         --vertex-brand-green: #0B9E84;
         --vertex-neon-green: #9AFF02;
         --vertex-teal: #007273;
         --vertex-red: #C44D30;
-        --bg-primary: #1E1E1E; /* Se necessário, ajuste para fundo mais claro conforme o guia */
+        --bg-primary: #1E1E1E;
         --bg-secondary: #2D2D2D;
         --text-primary: #FFFFFF;
         --text-secondary: #CCCCCC;
@@ -26,7 +26,6 @@ st.markdown(
         --font-family: 'Montserrat', sans-serif;
     }
     
-    /* Estilos globais */
     body, html, .stApp {
         font-family: var(--font-family);
     }
@@ -40,7 +39,7 @@ st.markdown(
         background-color: var(--bg-primary);
     }
     
-    /* Header customizado */
+    /* Header */
     .header {
         background: linear-gradient(135deg, var(--vertex-brand-green), #004f3a);
         padding: 1.5rem 2rem;
@@ -68,7 +67,7 @@ st.markdown(
         font-weight: 700;
     }
     
-    /* Seção de conteúdo */
+    /* Conteúdo */
     .content-section {
         padding: 2rem 1rem;
         background-color: var(--bg-primary);
@@ -86,9 +85,14 @@ st.markdown(
         padding: 1rem;
         border-radius: 4px;
         margin-bottom: 1rem;
+        transition: transform 0.2s;
     }
     
-    /* Footer customizado */
+    .analysis-card:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Footer */
     .footer {
         background: linear-gradient(135deg, var(--vertex-brand-green), #80d0c7);
         color: #000;
@@ -138,7 +142,7 @@ st.markdown(
         margin: 20px 0;
     }
     
-    /* Cartões dos membros da equipe */
+    /* Membros da equipe */
     .team-member {
         background-color: var(--card-bg);
         padding: 15px;
@@ -146,6 +150,11 @@ st.markdown(
         margin-bottom: 10px;
         border-left: 4px solid var(--vertex-brand-green);
         text-align: center;
+        transition: transform 0.2s;
+    }
+    
+    .team-member:hover {
+        transform: scale(1.02);
     }
     
     .team-member img {
@@ -230,7 +239,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header customizado
+# Header
 st.markdown(
     """
     <div class="header">
@@ -249,7 +258,6 @@ page = st.sidebar.radio("", ("Página Inicial", "Power BI", "Guia de Implementa�
 
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
-    """Carrega PDF diretamente do GitHub"""
     url = f"https://raw.githubusercontent.com/{repo_owner}/{repo_name}/{branch}/{path_to_pdf}"
     try:
         response = requests.get(url)
@@ -261,12 +269,11 @@ def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
 
 # Função para exibir PDF em iframe
 def display_pdf(pdf_bytes):
-    """Exibe um PDF usando um iframe"""
     base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
     pdf_display = f'<iframe class="pdf-frame" src="data:application/pdf;base64,{base64_pdf}" type="application/pdf"></iframe>'
     return pdf_display
 
-# Função para adicionar o footer
+# Função para adicionar o footer com o novo texto
 def add_footer():
     st.markdown(
         """
@@ -279,6 +286,7 @@ def add_footer():
                 <div class="footer-col">
                     <p>Na Vertex Tennis, tudo começa com o compromisso de entender e atender as necessidades dos nossos clientes e parceiros.</p>
                     <p>Desenvolvemos nossos produtos com um foco absoluto na qualidade, tecnologia e acessibilidade, criando soluções que alavancam negócios e ampliam o alcance do tênis no Brasil.</p>
+                    <p>A identidade visual da Vertex Tennis é a expressão de nossa essência: qualidade, inovação e paixão pelo tênis. Cada elemento — das cores à tipografia — foi pensado para reforçar nossa presença no mercado e garantir uma comunicação clara e impactante. A consistência no uso dessa identidade fortalece a marca e a torna reconhecível em qualquer contexto.</p>
                 </div>
             </div>
         </div>
@@ -286,12 +294,34 @@ def add_footer():
         unsafe_allow_html=True
     )
 
-# Conteúdo da página com content-wrapper para melhor posicionamento do footer
+# Container principal para conteúdo (para melhor posicionamento do footer)
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
 if page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Velocidade e Qualidade nas Decisões")
+    
+    # Seção de Introdução com Storytelling
+    st.subheader("Introdução")
+    st.markdown(
+        """
+        Na Vertex Tennis, transformamos dados em decisões estratégicas que impulsionam o desempenho e a inovação. Nosso compromisso com a qualidade se reflete em cada aspecto deste app – uma ferramenta desenvolvida para oferecer insights poderosos e uma experiência de navegação intuitiva.
+        """
+    )
+    
+    # Tour interativo (explicação passo a passo)
+    with st.expander("Tour do App"):
+        st.markdown(
+            """
+            **Bem-vindo ao Tour do App!**  
+            Explore as seções abaixo:
+            - **Página Inicial:** História, visão e a motivação por trás da Vertex Tennis.
+            - **Dashboard Power BI:** Visualização interativa dos dados e análises em tempo real.
+            - **Guia de Implementação:** Documentação completa para replicar os insights.
+            
+            Navegue por cada seção e descubra como nossos dados podem transformar seu negócio!
+            """
+        )
     
     # Vídeo incorporado
     st.subheader("Vídeo de Apresentação")
@@ -311,7 +341,7 @@ if page == "Página Inicial":
     
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Equipe envolvida
+    # Seção de Equipe Insight Hunters
     st.subheader("Insight Hunters")
     st.markdown(
         """
@@ -329,6 +359,10 @@ if page == "Página Inicial":
                 text-align: center;
                 background: var(--card-bg);
                 color: var(--text-primary);
+                transition: transform 0.2s;
+            }
+            .team-member:hover {
+                transform: scale(1.02);
             }
             .team-member img {
                 width: 100px;
@@ -403,7 +437,7 @@ elif page == "Power BI":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Relatório Power BI")
     
-    # Link público do Power BI
+    # Dashboard interativo
     st.subheader("Dashboard Interativo")
     st.markdown(
         """
@@ -418,7 +452,6 @@ elif page == "Power BI":
         unsafe_allow_html=True
     )
     
-    # Análises extraídas
     st.subheader("Análises Extraídas")
     st.markdown(
         """
@@ -450,11 +483,11 @@ elif page == "Guia de Implementação":
     st.title("Guia de Implementação do Power BI")
     
     # Parâmetros do repositório GitHub
-    repo_owner = "Gabriel4210"  
-    repo_name = "Vertex_App"     
+    repo_owner = "Gabriel4210"
+    repo_name = "Vertex_App"
     pdf_path = "guia_implementacao_power_bi.pdf"
     
-    # Exibir PDF embutido
+    # Exibição do PDF embutido
     try:
         pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
         st.subheader("Visualizar Documento")
@@ -468,7 +501,7 @@ elif page == "Guia de Implementação":
     
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Carregar o PDF com spinner para download
+    # Opção de download com indicador de carregamento
     with st.spinner("Carregando guia de implementação..."):
         try:
             pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
@@ -485,7 +518,7 @@ elif page == "Guia de Implementação":
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Fechar a div content-wrapper
+# Fechar o container principal
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Adicionar o footer
