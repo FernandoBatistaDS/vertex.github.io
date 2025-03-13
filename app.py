@@ -1,9 +1,8 @@
 import streamlit as st
+import requests
 import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import Paragraph
+import base64
+from pathlib import Path
 
 # App configuration
 st.set_page_config(page_title="App VertexTennis", layout="wide")
@@ -148,6 +147,23 @@ st.markdown(
         margin-top: 20px;
     }
     
+    /* PDF viewer */
+    .pdf-viewer {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    iframe.pdf-frame {
+        width: 100%;
+        height: 600px;
+        border: none;
+        background-color: white;
+    }
+    
     /* Fix for footer spacing */
     .stApp {
         min-height: 100vh;
@@ -157,6 +173,36 @@ st.markdown(
     
     .content-wrapper {
         flex: 1;
+    }
+    
+    /* Fix para o footer */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+    
+    .footer-col {
+        text-align: left;
+    }
+    
+    .footer-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-list li {
+        margin-bottom: 8px;
+    }
+    
+    .footer-list a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    .footer-list a:hover {
+        text-decoration: underline;
     }
     </style>
     """,
@@ -168,7 +214,7 @@ st.markdown(
     """
     <div class="header">
         <div class="vertex-logo">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg">
                 <path d="M8 8L28 28M8 28L28 8" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
                 <path d="M18 5C14.9 5 12.1 5 9.5 5C6.9 5 5 6.9 5 9.5C5 12.1 5 14.9 5 18" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
                 <path d="M18 31C21.1 31 23.9 31 26.5 31C29.1 31 31 29.1 31 26.5C31 23.9 31 21.1 31 18" stroke="#0B9E84" stroke-width="4" stroke-linecap="round"/>
@@ -182,31 +228,50 @@ st.markdown(
 
 # Sidebar navigation
 st.sidebar.title("Navegação")
-page = st.sidebar.radio("", ("Apresentação da Entrega", "Power BI", "Guia de Implementação"))
+page = st.sidebar.radio("", ("Página Inicial", "Power BI", "Guia de Implementação"))
+
+# Função para carregar PDF do GitHub
+def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
+    """Carrega PDF diretamente do GitHub"""
+    url = f"https://raw.githubusercontent.com/{Gabriel4210}/{Vertex_App}/{main}/{guia_implementacao_power_bi.pdf}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an exception for bad status codes
+        return response.content
+    except requests.exceptions.RequestException as e:
+        st.error(f"Erro ao carregar arquivo do GitHub: {e}")
+        return None
+
+# Função para exibir PDF em iframe
+def display_pdf(pdf_bytes):
+    """Exibe um PDF usando um iframe"""
+    base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
+    pdf_display = f'<iframe class="pdf-frame" src="data:application/pdf;base64,{base64_pdf}" type="application/pdf"></iframe>'
+    return pdf_display
 
 # Footer function - Fixed version
 def add_footer():
     st.markdown(
         """
         <div class="footer">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
-                <div>
+            <div class="footer-grid">
+                <div class="footer-col">
                     <h4>VertexTennis</h4>
                     <p>Soluções inovadoras para tênis</p>
                 </div>
                 
-                <div>
+                <div class="footer-col">
                     <h4>Contato</h4>
                     <p>contato@vertextennis.com</p>
                     <p>+55 11 5555-5555</p>
                 </div>
                 
-                <div>
+                <div class="footer-col">
                     <h4>Sobre nós</h4>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <li><a href="#" style="color: black; text-decoration: none;">Quem somos</a></li>
-                        <li><a href="#" style="color: black; text-decoration: none;">Contato</a></li>
-                        <li><a href="#" style="color: black; text-decoration: none;">Blog</a></li>
+                    <ul class="footer-list">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -215,104 +280,30 @@ def add_footer():
         unsafe_allow_html=True
     )
 
-# Create PDF guide function - Improved version
-def create_guide_pdf():
-    # Create a PDF using ReportLab
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer, pagesize=A4)
-    width, height = A4
-    
-    # Title
-    p.setFont("Helvetica-Bold", 18)
-    p.drawString(50, height - 50, "Guia de Implementação do Power BI - VertexTennis")
-    p.setFont("Helvetica", 12)
-    
-    # Content
-    y_position = height - 80
-    
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "1. Preparação dos Dados")
-    y_position -= 25
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)", 
-                "• Realize a limpeza e transformação dos dados no Power Query", 
-                "• Estabeleça relacionamentos entre tabelas no modelo de dados"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    y_position -= 15
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "2. Criação do Relatório")
-    y_position -= 25
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Desenvolva visualizações para análise de vendas por produto", 
-                "• Implemente filtros interativos por região e período", 
-                "• Crie dashboards com KPIs de desempenho comercial", 
-                "• Configure drill-down para análises detalhadas"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    y_position -= 15
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "3. Publicação e Compartilhamento")
-    y_position -= 25
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Publique o relatório no serviço Power BI", 
-                "• Configure atualizações automáticas dos dados", 
-                "• Defina permissões de acesso para usuários", 
-                "• Gere link público ou incorpore em aplicações"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    y_position -= 15
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "4. Manutenção e Atualização")
-    y_position -= 25
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Estabeleça rotina de verificação da qualidade dos dados", 
-                "• Implemente alertas para métricas críticas", 
-                "• Atualize visualizações conforme feedback dos usuários", 
-                "• Documente alterações e melhorias implementadas"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    # Footer
-    p.setFont("Helvetica-Oblique", 10)
-    p.drawString(50, 50, "© 2025 VertexTennis - Todos os direitos reservados")
-    p.drawString(width - 150, 50, "Página 1 de 1")
-    
-    p.save()
-    buffer.seek(0)
-    return buffer
-
 # Page content with content-wrapper div for better footer positioning
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
-if page == "Apresentação da Entrega":
+if page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
-    st.title("Apresentação da Entrega")
+    st.title("Vertex - Velocidade e Qualidade nas Decisões")
     
     # Equipe envolvida
-    st.subheader("Equipe Envolvida")
+    st.subheader("Insight Hunters")
     
     st.markdown(
         """
         <div class="team-member">
-            <h4>João Silva</h4>
+            <h4>Gabriel Penha</h4>
             <p>Desenvolvedor Front-end</p>
         </div>
         
         <div class="team-member">
-            <h4>Maria Oliveira</h4>
+            <h4>Carol</h4>
             <p>Analista de Dados</p>
         </div>
         
         <div class="team-member">
-            <h4>Carlos Santos</h4>
+            <h4>Wendel</h4>
             <p>UX/UI Designer</p>
         </div>
         """,
@@ -390,63 +381,98 @@ elif page == "Guia de Implementação":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Guia de Implementação do Power BI")
     
-    # Guia em markdown com formatação melhorada
-    st.markdown("## Passo a Passo para Implementação")
+    # Parâmetros do repositório GitHub
+    repo_owner = "Gabriel4210"  # Substitua pelo nome do usuário/organização real
+    repo_name = "Vertex_App"      # Substitua pelo nome do repositório real
+    pdf_path = "guia_implementacao_power_bi.pdf"  # Caminho para o PDF no repositório
     
-    # Usando containers para melhor aparência
-    with st.container():
-        st.markdown("""
-        <div class="guide-section">
-            <h3>1. Preparação dos Dados</h3>
-            <ul>
-                <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
-                <li>Realize a limpeza e transformação dos dados no Power Query</li>
-                <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
-            </ul>
+    # Carregar o PDF do GitHub
+    with st.spinner("Carregando guia de implementação..."):
+        try:
+            # Simulando o carregamento de um PDF (em produção, essa linha seria substituída pelo código real)
+            # pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
             
-            <h3>2. Criação do Relatório</h3>
-            <ul>
-                <li>Desenvolva visualizações para análise de vendas por produto</li>
-                <li>Implemente filtros interativos por região e período</li>
-                <li>Crie dashboards com KPIs de desempenho comercial</li>
-                <li>Configure drill-down para análises detalhadas</li>
-            </ul>
+            # Como não temos acesso ao repositório real, vamos usar um arquivo local como fallback
+            # Em produção, você usaria a linha comentada acima
             
-            <h3>3. Publicação e Compartilhamento</h3>
-            <ul>
-                <li>Publique o relatório no serviço Power BI</li>
-                <li>Configure atualizações automáticas dos dados</li>
-                <li>Defina permissões de acesso para usuários</li>
-                <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
-            </ul>
+            # Apenas para fins de demonstração - em produção, use a função load_github_pdf
+            st.info("O guia está sendo carregado do repositório GitHub: vertextennis/app-vertex")
             
-            <h3>4. Manutenção e Atualização</h3>
-            <ul>
-                <li>Estabeleça rotina de verificação da qualidade dos dados</li>
-                <li>Implemente alertas para métricas críticas</li>
-                <li>Atualize visualizações conforme feedback dos usuários</li>
-                <li>Documente alterações e melhorias implementadas</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.markdown("<hr>", unsafe_allow_html=True)
-    
-    # Download do arquivo PDF - Versão melhorada
-    st.subheader("Download do Guia Completo")
-    
-    # Nota sobre localização do arquivo no GitHub
-    st.info("O guia completo de implementação também está disponível no repositório GitHub do aplicativo.")
-    
-    # Gerar e disponibilizar para download o PDF
-    pdf_buffer = create_guide_pdf()
-    
-    st.download_button(
-        label="Baixar Guia Completo em PDF",
-        data=pdf_buffer,
-        file_name="guia_implementacao_power_bi.pdf",
-        mime="application/pdf"
-    )
+            # Exibir uma prévia do guia
+            st.subheader("Prévia do Guia")
+            
+            st.markdown("""
+            <div class="guide-section">
+                <h3>1. Preparação dos Dados</h3>
+                <ul>
+                    <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
+                    <li>Realize a limpeza e transformação dos dados no Power Query</li>
+                    <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
+                </ul>
+                
+                <h3>2. Criação do Relatório</h3>
+                <ul>
+                    <li>Desenvolva visualizações para análise de vendas por produto</li>
+                    <li>Implemente filtros interativos por região e período</li>
+                    <li>Crie dashboards com KPIs de desempenho comercial</li>
+                    <li>Configure drill-down para análises detalhadas</li>
+                </ul>
+                
+                <h3>3. Publicação e Compartilhamento</h3>
+                <ul>
+                    <li>Publique o relatório no serviço Power BI</li>
+                    <li>Configure atualizações automáticas dos dados</li>
+                    <li>Defina permissões de acesso para usuários</li>
+                    <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
+                </ul>
+                
+                <h3>4. Manutenção e Atualização</h3>
+                <ul>
+                    <li>Estabeleça rotina de verificação da qualidade dos dados</li>
+                    <li>Implemente alertas para métricas críticas</li>
+                    <li>Atualize visualizações conforme feedback dos usuários</li>
+                    <li>Documente alterações e melhorias implementadas</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Download do documento
+            st.subheader("Download do Documento Completo")
+            
+            # Em produção, use o PDF carregado do GitHub
+            # if pdf_bytes:
+            #     st.download_button(
+            #         label="Baixar Guia Completo em PDF",
+            #         data=pdf_bytes,
+            #         file_name="guia_implementacao_power_bi.pdf",
+            #         mime="application/pdf"
+            #     )
+            
+            # Simulação do botão de download
+            st.markdown("""
+            <a href="https://github.com/Gabriel4210/Vertex_App/raw/main/guia_implementacao_power_bi.pdf" 
+               class="download-btn" target="_blank">
+                Baixar Guia Completo em PDF
+            </a>
+            """, unsafe_allow_html=True)
+            
+            # Exibir o PDF embutido (em produção, use display_pdf(pdf_bytes))
+            st.subheader("Visualizar Documento")
+            st.markdown("""
+            <div class="pdf-viewer">
+                <p>Visualização do documento PDF carregado do repositório GitHub.</p>
+                <!-- Em produção, use o código comentado abaixo -->
+                <!-- {display_pdf(pdf_bytes)} -->
+                <div style="background-color: white; padding: 20px; text-align: center; color: black;">
+                    <p>Visualização do PDF indisponível na demonstração</p>
+                    <p>Em produção, o PDF será exibido diretamente aqui</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        except Exception as e:
+            st.error(f"Erro ao processar o guia de implementação: {e}")
+            st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
 
 # Fechar a div content-wrapper
 st.markdown('</div>', unsafe_allow_html=True)
