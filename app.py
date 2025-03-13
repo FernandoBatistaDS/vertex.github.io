@@ -282,7 +282,7 @@ st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
 if page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
-    st.title("Vertex - Velocidade e Qualidade nas Decisões")
+    st.title("Velocidade e Qualidade nas Decisões")
     
     # Vídeo incorporado
     st.subheader("Vídeo de Apresentação")
@@ -453,25 +453,22 @@ elif page == "Guia de Implementação":
     with st.spinner("Carregando guia de implementação..."):
         try:
             # Simulando o carregamento de um PDF (em produção, essa linha seria substituída pelo código real)
-            # pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
+            pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
             
             # Como não temos acesso ao repositório real, vamos usar um arquivo local como fallback
             # Em produção, você usaria a linha comentada acima
-            
-            # Apenas para fins de demonstração - em produção, use a função load_github_pdf
-            st.info("O guia está sendo carregado do repositório GitHub: vertextennis/app-vertex")
             
             # Download do documento
             st.subheader("Download do Documento Completo")
             
             # Em produção, use o PDF carregado do GitHub
-            # if pdf_bytes:
-            #     st.download_button(
-            #         label="Baixar Guia Completo em PDF",
-            #         data=pdf_bytes,
-            #         file_name="guia_implementacao_power_bi.pdf",
-            #         mime="application/pdf"
-            #     )
+            if pdf_bytes:
+                 st.download_button(
+                     label="Baixar Guia Completo em PDF",
+                     data=pdf_bytes,
+                     file_name="guia_implementacao_power_bi.pdf",
+                     mime="application/pdf"
+                 )
             
             # Simulação do botão de download
             st.markdown("""
