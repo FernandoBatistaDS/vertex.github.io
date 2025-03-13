@@ -320,8 +320,8 @@ if page == "Página Inicial":
             padding: 15px;
             border-radius: 8px;
             text-align: center;
-            background: #ffffff; /* Cor de fundo branca */
-            color: #000000; /* Cor do texto preta */
+            background: #2D2D2D; 
+            color: #ffffff;
         }
         .team-member img {
             width: 100px;
