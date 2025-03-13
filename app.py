@@ -449,7 +449,22 @@ elif page == "Guia de Implementação":
     repo_name = "Vertex_App"      # Substitua pelo nome do repositório real
     pdf_path = "guia_implementacao_power_bi.pdf"  # Caminho para o PDF no repositório
     
-    # Carregar o PDF do GitHub
+    
+            
+try:
+    # Carregar o PDF do GitHub (ou usar outro método para obter os bytes do PDF)
+    pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
+    st.subheader("Visualizar Documento")
+    if pdf_bytes:
+        st.markdown(display_pdf(pdf_bytes), unsafe_allow_html=True)
+    else:
+        st.info("PDF indisponível no momento.")
+except Exception as e:
+    st.error(f"Erro ao processar o guia de implementação: {e}")
+    st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
+
+
+# Carregar o PDF do GitHub
     with st.spinner("Carregando guia de implementação..."):
         try:
             # Simulando o carregamento de um PDF (em produção, essa linha seria substituída pelo código real)
@@ -469,35 +484,6 @@ elif page == "Guia de Implementação":
                      file_name="guia_implementacao_power_bi.pdf",
                      mime="application/pdf"
                  )
-            
-            # Simulação do botão de download
-            st.markdown("""
-            <a href="https://github.com/Gabriel4210/Vertex_App/raw/main/guia_implementacao_power_bi.pdf" 
-               class="download-btn" target="_blank">
-                Baixar Guia Completo em PDF
-            </a>
-            """, unsafe_allow_html=True)
-            
-            # Exibir o PDF embutido (em produção, use display_pdf(pdf_bytes))
-            st.subheader("Visualizar Documento")
-            st.markdown("""
-            <div class="pdf-viewer">
-                <p>Visualização do documento PDF carregado do repositório GitHub.</p>
-                <!-- Em produção, use o código comentado abaixo -->
-                <!-- {display_pdf(pdf_bytes)} -->
-                <div style="background-color: white; padding: 20px; text-align: center; color: black;">
-                    <p>Visualização do PDF indisponível na demonstração</p>
-                    <p>Em produção, o PDF será exibido diretamente aqui</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-        except Exception as e:
-            st.error(f"Erro ao processar o guia de implementação: {e}")
-            st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
-
-# Fechar a div content-wrapper
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Adiciona o footer no final (fora da content-wrapper)
 add_footer()
