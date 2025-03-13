@@ -1,6 +1,9 @@
 import streamlit as st
 import io
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph
 
 # App configuration
 st.set_page_config(page_title="App VertexTennis", layout="wide")
@@ -81,6 +84,8 @@ st.markdown(
         color: black;
         padding: 2rem 1rem;
         margin-top: 2rem;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     /* Hide Streamlit elements */
@@ -142,6 +147,17 @@ st.markdown(
         display: inline-block;
         margin-top: 20px;
     }
+    
+    /* Fix for footer spacing */
+    .stApp {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .content-wrapper {
+        flex: 1;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -168,7 +184,7 @@ st.markdown(
 st.sidebar.title("Navegação")
 page = st.sidebar.radio("", ("Apresentação da Entrega", "Power BI", "Guia de Implementação"))
 
-# Footer function
+# Footer function - Fixed version
 def add_footer():
     st.markdown(
         """
@@ -199,7 +215,83 @@ def add_footer():
         unsafe_allow_html=True
     )
 
-# Page content
+# Create PDF guide function - Improved version
+def create_guide_pdf():
+    # Create a PDF using ReportLab
+    buffer = io.BytesIO()
+    p = canvas.Canvas(buffer, pagesize=A4)
+    width, height = A4
+    
+    # Title
+    p.setFont("Helvetica-Bold", 18)
+    p.drawString(50, height - 50, "Guia de Implementação do Power BI - VertexTennis")
+    p.setFont("Helvetica", 12)
+    
+    # Content
+    y_position = height - 80
+    
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y_position, "1. Preparação dos Dados")
+    y_position -= 25
+    p.setFont("Helvetica", 12)
+    
+    for item in ["• Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)", 
+                "• Realize a limpeza e transformação dos dados no Power Query", 
+                "• Estabeleça relacionamentos entre tabelas no modelo de dados"]:
+        p.drawString(70, y_position, item)
+        y_position -= 20
+    
+    y_position -= 15
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y_position, "2. Criação do Relatório")
+    y_position -= 25
+    p.setFont("Helvetica", 12)
+    
+    for item in ["• Desenvolva visualizações para análise de vendas por produto", 
+                "• Implemente filtros interativos por região e período", 
+                "• Crie dashboards com KPIs de desempenho comercial", 
+                "• Configure drill-down para análises detalhadas"]:
+        p.drawString(70, y_position, item)
+        y_position -= 20
+    
+    y_position -= 15
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y_position, "3. Publicação e Compartilhamento")
+    y_position -= 25
+    p.setFont("Helvetica", 12)
+    
+    for item in ["• Publique o relatório no serviço Power BI", 
+                "• Configure atualizações automáticas dos dados", 
+                "• Defina permissões de acesso para usuários", 
+                "• Gere link público ou incorpore em aplicações"]:
+        p.drawString(70, y_position, item)
+        y_position -= 20
+    
+    y_position -= 15
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y_position, "4. Manutenção e Atualização")
+    y_position -= 25
+    p.setFont("Helvetica", 12)
+    
+    for item in ["• Estabeleça rotina de verificação da qualidade dos dados", 
+                "• Implemente alertas para métricas críticas", 
+                "• Atualize visualizações conforme feedback dos usuários", 
+                "• Documente alterações e melhorias implementadas"]:
+        p.drawString(70, y_position, item)
+        y_position -= 20
+    
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawString(50, 50, "© 2025 VertexTennis - Todos os direitos reservados")
+    p.drawString(width - 150, 50, "Página 1 de 1")
+    
+    p.save()
+    buffer.seek(0)
+    return buffer
+
+# Page content with content-wrapper div for better footer positioning
+st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
+
 if page == "Apresentação da Entrega":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Apresentação da Entrega")
@@ -245,9 +337,6 @@ if page == "Apresentação da Entrega":
         """, 
         unsafe_allow_html=True
     )
-    
-    # Adiciona o footer
-    add_footer()
     
 elif page == "Power BI":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
@@ -297,113 +386,70 @@ elif page == "Power BI":
         unsafe_allow_html=True
     )
     
-    # Adiciona o footer
-    add_footer()
-    
 elif page == "Guia de Implementação":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Guia de Implementação do Power BI")
     
-    # Guia em markdown
+    # Guia em markdown com formatação melhorada
     st.markdown("## Passo a Passo para Implementação")
     
-    # Usando o st.code para exibir o código HTML corretamente
-    st.code("""<h1>1. Preparação dos Dados</h1>
-<ul>
-    <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
-    <li>Realize a limpeza e transformação dos dados no Power Query</li>
-    <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
-</ul>
-
-<h2>2. Criação do Relatório</h2>
-<ul>
-    <li>Desenvolva visualizações para análise de vendas por produto</li>
-    <li>Implemente filtros interativos por região e período</li>
-    <li>Crie dashboards com KPIs de desempenho comercial</li>
-    <li>Configure drill-down para análises detalhadas</li>
-</ul>
-
-<h3>3. Publicação e Compartilhamento</h3>
-<ul>
-    <li>Publique o relatório no serviço Power BI</li>
-    <li>Configure atualizações automáticas dos dados</li>
-    <li>Defina permissões de acesso para usuários</li>
-    <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
-</ul>
-
-<h4>4. Manutenção e Atualização</h4>
-<ul>
-    <li>Estabeleça rotina de verificação da qualidade dos dados</li>
-    <li>Implemente alertas para métricas críticas</li>
-    <li>Atualize visualizações conforme feedback dos usuários</li>
-    <li>Documente alterações e melhorias implementadas</li>
-</ul>""", language="html")
+    # Usando containers para melhor aparência
+    with st.container():
+        st.markdown("""
+        <div class="guide-section">
+            <h3>1. Preparação dos Dados</h3>
+            <ul>
+                <li>Conecte-se às fontes de dados relevantes (SQL Server, Excel, CSV)</li>
+                <li>Realize a limpeza e transformação dos dados no Power Query</li>
+                <li>Estabeleça relacionamentos entre tabelas no modelo de dados</li>
+            </ul>
+            
+            <h3>2. Criação do Relatório</h3>
+            <ul>
+                <li>Desenvolva visualizações para análise de vendas por produto</li>
+                <li>Implemente filtros interativos por região e período</li>
+                <li>Crie dashboards com KPIs de desempenho comercial</li>
+                <li>Configure drill-down para análises detalhadas</li>
+            </ul>
+            
+            <h3>3. Publicação e Compartilhamento</h3>
+            <ul>
+                <li>Publique o relatório no serviço Power BI</li>
+                <li>Configure atualizações automáticas dos dados</li>
+                <li>Defina permissões de acesso para usuários</li>
+                <li>Gere link público ou incorpore em aplicações (como este Streamlit)</li>
+            </ul>
+            
+            <h3>4. Manutenção e Atualização</h3>
+            <ul>
+                <li>Estabeleça rotina de verificação da qualidade dos dados</li>
+                <li>Implemente alertas para métricas críticas</li>
+                <li>Atualize visualizações conforme feedback dos usuários</li>
+                <li>Documente alterações e melhorias implementadas</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
     
     st.markdown("<hr>", unsafe_allow_html=True)
     
-    # Download do arquivo PDF
+    # Download do arquivo PDF - Versão melhorada
     st.subheader("Download do Guia Completo")
     
-    # Cria um PDF simples para download
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-    p.setFont("Helvetica", 12)
+    # Nota sobre localização do arquivo no GitHub
+    st.info("O guia completo de implementação também está disponível no repositório GitHub do aplicativo.")
     
-    # Título
-    p.setFont("Helvetica-Bold", 18)
-    p.drawString(50, 800, "Guia de Implementação do Power BI - VertexTennis")
-    p.setFont("Helvetica", 12)
-    
-    # Conteúdo
-    y_position = 750
-    
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "1. Preparação dos Dados")
-    y_position -= 20
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Conecte-se às fontes de dados relevantes", 
-                "• Realize a limpeza e transformação dos dados", 
-                "• Estabeleça relacionamentos entre tabelas"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    y_position -= 10
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "2. Criação do Relatório")
-    y_position -= 20
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Desenvolva visualizações para análise de vendas", 
-                "• Implemente filtros interativos por região e período", 
-                "• Crie dashboards com KPIs de desempenho", 
-                "• Configure drill-down para análises detalhadas"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    y_position -= 10
-    p.setFont("Helvetica-Bold", 14)
-    p.drawString(50, y_position, "3. Publicação e Compartilhamento")
-    y_position -= 20
-    p.setFont("Helvetica", 12)
-    
-    for item in ["• Publique o relatório no serviço Power BI", 
-                "• Configure atualizações automáticas dos dados", 
-                "• Defina permissões de acesso para usuários", 
-                "• Gere link público ou incorpore em aplicações"]:
-        p.drawString(70, y_position, item)
-        y_position -= 20
-    
-    p.showPage()
-    p.save()
-    buffer.seek(0)
+    # Gerar e disponibilizar para download o PDF
+    pdf_buffer = create_guide_pdf()
     
     st.download_button(
         label="Baixar Guia Completo em PDF",
-        data=buffer,
+        data=pdf_buffer,
         file_name="guia_implementacao_power_bi.pdf",
         mime="application/pdf"
     )
-    
-    # Adiciona o footer
-    add_footer()
+
+# Fechar a div content-wrapper
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Adiciona o footer no final (fora da content-wrapper)
+add_footer()
