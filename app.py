@@ -35,28 +35,33 @@ st.markdown(
         background-color: var(--bg-primary);
     }
     
-    /* Custom header */
+    /* HEADER */
     .header {
-        background-color: var(--bg-primary);
-        padding: 1rem;
+        /* Pode manter var(--bg-primary) ou usar um gradiente leve */
+        background: linear-gradient(135deg, var(--bg-primary), #333);
+        padding: 1rem 2rem;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid var(--card-border);
     }
     
-    .vertex-logo {
+    /* Logo e título */
+    .header .vertex-logo {
         display: flex;
         align-items: center;
         gap: 10px;
     }
-    
-    .logo-text {
+    .header .vertex-logo img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+    .header .logo-text {
         color: var(--text-primary);
-        font-size: 24px;
+        font-size: 28px;
         font-weight: bold;
     }
-    
+   
     /* Content styles */
     .content-section {
         padding: 2rem 1rem;
@@ -77,14 +82,45 @@ st.markdown(
         margin-bottom: 1rem;
     }
     
-    /* Footer */
+    /* FOOTER */
     .footer {
-        background-color: var(--vertex-neon-green);
-        color: black;
-        padding: 2rem 1rem;
+        /* Se quiser manter o neon verde, podemos suavizar com um gradiente */
+        background: linear-gradient(135deg, var(--vertex-neon-green), #c0ff77);
+        color: #000;
+        padding: 2rem 0;
         margin-top: 2rem;
         width: 100%;
         box-sizing: border-box;
+    }
+    
+    /* Grid interno do footer */
+    .footer-grid {
+        max-width: 1200px;       /* Para limitar a largura máxima e centralizar */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        padding: 0 1rem;         /* Espaçamento lateral */
+    }
+    
+    /* Colunas e listas */
+    .footer-col h4 {
+        margin-bottom: 10px;
+    }
+    .footer-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-list li {
+        margin-bottom: 8px;
+    }
+    .footer-list a {
+        color: #000;
+        text-decoration: none;
+    }
+    .footer-list a:hover {
+        text-decoration: underline;
     }
     
     /* Hide Streamlit elements */
@@ -173,36 +209,6 @@ st.markdown(
     
     .content-wrapper {
         flex: 1;
-    }
-    
-    /* Fix para o footer */
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-    }
-    
-    .footer-col {
-        text-align: left;
-    }
-    
-    .footer-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .footer-list li {
-        margin-bottom: 8px;
-    }
-    
-    .footer-list a {
-        color: black;
-        text-decoration: none;
-    }
-    
-    .footer-list a:hover {
-        text-decoration: underline;
     }
     </style>
     """,
