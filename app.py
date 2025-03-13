@@ -463,6 +463,7 @@ except Exception as e:
     st.error(f"Erro ao processar o guia de implementação: {e}")
     st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
 
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Carregar o PDF do GitHub
     with st.spinner("Carregando guia de implementação..."):
