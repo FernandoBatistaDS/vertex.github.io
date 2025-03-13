@@ -7,25 +7,30 @@ from pathlib import Path
 # App configuration
 st.set_page_config(page_title="App VertexTennis", layout="wide")
 
-# CSS com o estilo da VertexTennis
+# CSS com o estilo da VertexTennis atualizado conforme o Guia de Identidade Visual
 st.markdown(
     """
     <style>
-    /* Custom colors */
+    /* Variáveis de cores e fontes da identidade visual */
     :root {
         --vertex-brand-green: #0B9E84;
         --vertex-neon-green: #9AFF02;
         --vertex-teal: #007273;
         --vertex-red: #C44D30;
-        --bg-primary: #1E1E1E;
+        --bg-primary: #1E1E1E; /* Se necessário, ajuste para fundo mais claro conforme o guia */
         --bg-secondary: #2D2D2D;
         --text-primary: #FFFFFF;
         --text-secondary: #CCCCCC;
         --card-bg: #2D2D2D;
         --card-border: #3D3D3D;
+        --font-family: 'Montserrat', sans-serif;
     }
     
-    /* Base styles */
+    /* Estilos globais */
+    body, html, .stApp {
+        font-family: var(--font-family);
+    }
+    
     .main {
         background-color: var(--bg-primary);
         color: var(--text-primary);
@@ -35,34 +40,35 @@ st.markdown(
         background-color: var(--bg-primary);
     }
     
-    /* HEADER */
+    /* Header customizado */
     .header {
-        /* Pode manter var(--bg-primary) ou usar um gradiente leve */
-        background: linear-gradient(135deg, var(--bg-primary), #333);
-        padding: 1rem 2rem;
+        background: linear-gradient(135deg, var(--vertex-brand-green), #004f3a);
+        padding: 1.5rem 2rem;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid var(--card-border);
+        border-bottom: 2px solid var(--card-border);
     }
     
-    /* Logo e título */
-    .header .vertex-logo {
+    .vertex-logo {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
     }
-    .header .vertex-logo img {
+    
+    .vertex-logo img {
         width: 48px;
         height: 48px;
         object-fit: contain;
     }
-    .header .logo-text {
+    
+    .logo-text {
         color: var(--text-primary);
         font-size: 28px;
-        font-weight: bold;
+        font-weight: 700;
     }
-   
-    /* Content styles */
+    
+    /* Seção de conteúdo */
     .content-section {
         padding: 2rem 1rem;
         background-color: var(--bg-primary);
@@ -72,7 +78,7 @@ st.markdown(
         color: var(--text-primary);
     }
     
-    /* Analysis cards */
+    /* Cartões de análise */
     .analysis-card {
         background-color: var(--card-bg);
         border-left: 4px solid var(--vertex-brand-green);
@@ -82,10 +88,9 @@ st.markdown(
         margin-bottom: 1rem;
     }
     
-    /* FOOTER */
+    /* Footer customizado */
     .footer {
-        /* Se quiser manter o neon verde, podemos suavizar com um gradiente */
-        background: linear-gradient(135deg, var(--vertex-neon-green), #c0ff77);
+        background: linear-gradient(135deg, var(--vertex-brand-green), #80d0c7);
         color: #000;
         padding: 2rem 0;
         margin-top: 2rem;
@@ -93,63 +98,73 @@ st.markdown(
         box-sizing: border-box;
     }
     
-    /* Grid interno do footer */
     .footer-grid {
-        max-width: 1200px;       /* Para limitar a largura máxima e centralizar */
+        max-width: 1200px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 30px;
-        padding: 0 1rem;         /* Espaçamento lateral */
+        padding: 0 1rem;
     }
     
-    /* Colunas e listas */
     .footer-col h4 {
         margin-bottom: 10px;
     }
+    
     .footer-list {
         list-style-type: none;
         padding: 0;
         margin: 0;
     }
+    
     .footer-list li {
         margin-bottom: 8px;
     }
+    
     .footer-list a {
         color: #000;
         text-decoration: none;
     }
+    
     .footer-list a:hover {
         text-decoration: underline;
     }
     
-    /* Hide Streamlit elements */
-    #MainMenu, footer {
-        visibility: hidden;
-    }
-    
-    div.block-container {
-        padding-top: 1rem;
-    }
-
-    /* Video container */
+    /* Container de vídeo */
     .video-container {
         background-color: var(--card-bg);
         border-radius: 8px;
         padding: 20px;
         margin: 20px 0;
     }
-
-    /* Team members */
+    
+    /* Cartões dos membros da equipe */
     .team-member {
         background-color: var(--card-bg);
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 10px;
         border-left: 4px solid var(--vertex-brand-green);
+        text-align: center;
     }
-
-    /* Guide section */
+    
+    .team-member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .team-member h4 {
+        margin: 10px 0 5px;
+    }
+    
+    .team-member a {
+        text-decoration: none;
+        color: #0077b5;
+    }
+    
+    /* Seção do guia */
     .guide-section {
         background-color: var(--card-bg);
         padding: 20px;
@@ -157,7 +172,7 @@ st.markdown(
         margin: 20px 0;
     }
     
-    /* Code blocks */
+    /* Blocos de código */
     pre {
         background-color: #1A1A1A;
         border-radius: 4px;
@@ -171,8 +186,8 @@ st.markdown(
         font-family: 'Courier New', monospace;
         color: #E0E0E0;
     }
-
-    /* Download button */
+    
+    /* Botão de download */
     .download-btn {
         background-color: var(--vertex-brand-green);
         color: white;
@@ -183,7 +198,7 @@ st.markdown(
         margin-top: 20px;
     }
     
-    /* PDF viewer */
+    /* Visualizador de PDF */
     .pdf-viewer {
         background-color: var(--card-bg);
         border-radius: 8px;
@@ -200,7 +215,7 @@ st.markdown(
         background-color: white;
     }
     
-    /* Fix for footer spacing */
+    /* Layout geral para posicionamento do footer */
     .stApp {
         min-height: 100vh;
         display: flex;
@@ -215,22 +230,20 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Custom header
+# Header customizado
 st.markdown(
     """
     <div class="header">
-        <div class="header">
-            <div class="vertex-logo">
-                <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" width="36" height="36" alt="Logo VertexTennis">
-                <span class="logo-text">VertexTennis</span>
-            </div>
+        <div class="vertex-logo">
+            <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" alt="Logo VertexTennis">
+            <span class="logo-text">VertexTennis</span>
         </div>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# Sidebar navigation
+# Navegação lateral
 st.sidebar.title("Navegação")
 page = st.sidebar.radio("", ("Página Inicial", "Power BI", "Guia de Implementação"))
 
@@ -240,7 +253,7 @@ def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
     url = f"https://raw.githubusercontent.com/{repo_owner}/{repo_name}/{branch}/{path_to_pdf}"
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Raise an exception for bad status codes
+        response.raise_for_status()
         return response.content
     except requests.exceptions.RequestException as e:
         st.error(f"Erro ao carregar arquivo do GitHub: {e}")
@@ -253,26 +266,12 @@ def display_pdf(pdf_bytes):
     pdf_display = f'<iframe class="pdf-frame" src="data:application/pdf;base64,{base64_pdf}" type="application/pdf"></iframe>'
     return pdf_display
 
-# Footer function - Fixed version
+# Função para adicionar o footer
 def add_footer():
     st.markdown(
         """
-        <div class="footer" style="
-            background: linear-gradient(135deg, var(--vertex-neon-green), #c0ff77);
-            color: #000;
-            padding: 2rem 0;
-            margin-top: 2rem;
-            width: 100%;
-            box-sizing: border-box;
-        ">
-            <div class="footer-grid" style="
-                max-width: 1200px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 30px;
-                padding: 0 1rem;
-            ">
+        <div class="footer">
+            <div class="footer-grid">
                 <div class="footer-col">
                     <h4>VertexTennis</h4>
                     <p>Soluções inovadoras para tênis</p>
@@ -286,16 +285,10 @@ def add_footer():
                 
                 <div class="footer-col">
                     <h4>Sobre nós</h4>
-                    <ul class="footer-list" style="list-style-type: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 8px;">
-                            <a href="#" style="color: #000; text-decoration: none;">Quem somos</a>
-                        </li>
-                        <li style="margin-bottom: 8px;">
-                            <a href="#" style="color: #000; text-decoration: none;">Contato</a>
-                        </li>
-                        <li style="margin-bottom: 8px;">
-                            <a href="#" style="color: #000; text-decoration: none;">Blog</a>
-                        </li>
+                    <ul class="footer-list">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -304,8 +297,7 @@ def add_footer():
         unsafe_allow_html=True
     )
 
-
-# Page content com content-wrapper para melhor posicionamento do footer
+# Conteúdo da página com content-wrapper para melhor posicionamento do footer
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
 if page == "Página Inicial":
@@ -324,7 +316,7 @@ if page == "Página Inicial":
                 allowfullscreen>
             </iframe>
         </div>
-        """, 
+        """,
         unsafe_allow_html=True
     )
     
@@ -346,8 +338,8 @@ if page == "Página Inicial":
                 padding: 15px;
                 border-radius: 8px;
                 text-align: center;
-                background: #2D2D2D; 
-                color: #ffffff;
+                background: var(--card-bg);
+                color: var(--text-primary);
             }
             .team-member img {
                 width: 100px;
@@ -360,7 +352,7 @@ if page == "Página Inicial":
             }
             .team-member a {
                 text-decoration: none;
-                color: #0077b5; /* Azul do LinkedIn */
+                color: #0077b5;
             }
         </style>
         
@@ -426,14 +418,14 @@ elif page == "Power BI":
     st.subheader("Dashboard Interativo")
     st.markdown(
         """
-        <div style="background-color: #2D2D2D; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <div style="background-color: var(--card-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
             <iframe width="100%" height="600" 
                 src="https://app.powerbi.com/view?r=eyJrIjoiZTRlNzE0NGUtYTdhMi00OWVlLWEzZWEtNzg4YmZlN2JhZDRi" 
                 frameborder="0" 
                 allowFullScreen="true">
             </iframe>
         </div>
-        """, 
+        """,
         unsafe_allow_html=True
     )
     
@@ -469,9 +461,9 @@ elif page == "Guia de Implementação":
     st.title("Guia de Implementação do Power BI")
     
     # Parâmetros do repositório GitHub
-    repo_owner = "Gabriel4210"  # Substitua pelo nome do usuário/organização real
-    repo_name = "Vertex_App"     # Substitua pelo nome do repositório real
-    pdf_path = "guia_implementacao_power_bi.pdf"  # Caminho para o PDF no repositório
+    repo_owner = "Gabriel4210"  
+    repo_name = "Vertex_App"     
+    pdf_path = "guia_implementacao_power_bi.pdf"
     
     # Exibir PDF embutido
     try:
@@ -487,7 +479,7 @@ elif page == "Guia de Implementação":
     
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Carregar o PDF do GitHub com spinner para download
+    # Carregar o PDF com spinner para download
     with st.spinner("Carregando guia de implementação..."):
         try:
             pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
@@ -507,5 +499,5 @@ elif page == "Guia de Implementação":
 # Fechar a div content-wrapper
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Adiciona o footer no final (fora da content-wrapper)
+# Adicionar o footer
 add_footer()
