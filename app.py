@@ -387,13 +387,13 @@ if page == "Página Inicial":
                 <p>Telefone: (71) 99210-9164</p>
             </div>
             <div class="team-member">
-                <img src="./Photos/carol.jpeg" alt="Carolina Diniz">
+                <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/carol.jpeg?raw=true" alt="Carolina Diniz">
                 <h4>Carolina Diniz</h4>
                 <p><a href="https://www.linkedin.com/in/carolina-diniz-2b80701a4" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (31) 99238-0507</p>
             </div>
             <div class="team-member">
-                <img src="./Photos/fernando.jpeg" alt="Fernando Batista">
+                <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/fernando.jpeg?raw=true" alt="Fernando Batista">
                 <h4>Fernando Batista</h4>
                 <p><a href="https://www.linkedin.com/in/fernandobatistads" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (11) 98410-1047</p>
@@ -405,7 +405,7 @@ if page == "Página Inicial":
                 <p>Telefone: (21) 99252-2552</p>
             </div>
             <div class="team-member">
-                <img src="./Photos/matheus.jpeg" alt="Matheus Marques">
+                <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/matheus.jpeg?raw=true" alt="Matheus Marques">
                 <h4>Matheus Marques</h4>
                 <p><a href="https://www.linkedin.com/in/matheus-marques-rodrigues" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (31) 99172-3497</p>
