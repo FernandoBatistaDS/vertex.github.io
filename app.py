@@ -448,7 +448,7 @@ elif st.session_state.page == "Power BI":
         """
         <div style="background-color: var(--card-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
             <iframe width="100%" height="600" 
-                src="https://app.powerbi.com/view?r=eyJrIjoiZTRlNzE0NGUtYTdhMi00OWVlLWEzZWEtNzg4YmZlN2JhZDRi" 
+                src="https://app.powerbi.com/view?r=eyJrIjoiOGIzOGI0ZjEtMDM2Mi00OWIyLTkxNDgtOWE5YmMyYzM0NGNlIiwidCI6ImRmNzFmNmJiLWUzY2MtNGY1Yi1iNTMyLTc5ZGUyNjFiNTFhMiJ9" 
                 frameborder="0" 
                 allowFullScreen="true">
             </iframe>
