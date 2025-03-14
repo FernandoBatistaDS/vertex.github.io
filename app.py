@@ -399,7 +399,7 @@ if page == "Página Inicial":
                 <p>Telefone: (11) 98410-1047</p>
             </div>
             <div class="team-member">
-                <img src="https://lh3.google.com/u/0/d/1-rIh4JFW-Rb8hC131K_Dd6p-dJ1SZWcB=w1866-h929-iv1" alt="Antônio Brandenberger">
+                <img src="https://drive.google.com/uc?export=view&id=1-rIh4JFW-Rb8hC131K_Dd6p-dJ1SZWcB" alt="Antônio Brandenberger">
                 <h4>Antônio Brandenberger</h4>
                 <p><a href="https://www.linkedin.com/in/antonio-brandenberger" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (21) 99252-2552</p>
