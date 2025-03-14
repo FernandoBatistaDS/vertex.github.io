@@ -142,7 +142,7 @@ st.markdown(
         margin: 20px 0;
     }
     
-    /* Membros da equipe */
+    /* Membros da equipe (padrão geral) */
     .team-member {
         background-color: var(--card-bg);
         padding: 15px;
@@ -151,10 +151,12 @@ st.markdown(
         border-left: 4px solid var(--vertex-brand-green);
         text-align: center;
         transition: transform 0.2s;
+        color: var(--text-primary);
     }
     
     .team-member:hover {
-        transform: scale(1.02);
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     
     .team-member img {
@@ -170,7 +172,7 @@ st.markdown(
     
     .team-member a {
         text-decoration: none;
-        color: #0077b5;
+        color: #0077b5; /* cor padrão do LinkedIn */
     }
     
     /* Seção do guia */
@@ -233,6 +235,17 @@ st.markdown(
     
     .content-wrapper {
         flex: 1;
+    }
+    
+    /* Grade responsiva para a seção da Equipe */
+    .grid-container {
+        display: grid;
+        /* Ajuste para tornar responsivo:
+           cada card terá no mínimo 250px de largura 
+           e no máximo 1 fração do espaço disponível */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
     }
     </style>
     """,
@@ -345,40 +358,6 @@ if page == "Página Inicial":
     st.subheader("Equipe da Insight Hunters")
     st.markdown(
         """
-        <style>
-            .grid-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-                margin-top: 20px;
-            }
-            .team-member {
-                border: 1px solid #ccc;
-                padding: 15px;
-                border-radius: 8px;
-                text-align: center;
-                background: var(--card-bg);
-                color: var(--text-primary);
-                transition: transform 0.2s;
-            }
-            .team-member:hover {
-                transform: scale(1.02);
-            }
-            .team-member img {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-            .team-member h4 {
-                margin: 10px 0 5px;
-            }
-            .team-member a {
-                text-decoration: none;
-                color: #0077b5;
-            }
-        </style>
-        
         <div class="grid-container">
             <div class="team-member">
                 <img src="https://lh3.googleusercontent.com/a/AGNmyxZ6qSVDtB856uLoGdIQJoPKY712zFFxXm9oj-xZ1g=s96-c" alt="Gabriel Penha">
