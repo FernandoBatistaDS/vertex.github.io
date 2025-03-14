@@ -399,7 +399,7 @@ if page == "Página Inicial":
                 <p>Telefone: (11) 98410-1047</p>
             </div>
             <div class="team-member">
-                <img src="./Photos/antonio.jpeg" alt="Antônio Brandenberger">
+                <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/antonio.jpeg?raw=true" alt="Antônio Brandenberger">
                 <h4>Antônio Brandenberger</h4>
                 <p><a href="https://www.linkedin.com/in/antonio-brandenberger" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (21) 99252-2552</p>
