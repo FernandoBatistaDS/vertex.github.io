@@ -387,25 +387,25 @@ if page == "Página Inicial":
                 <p>Telefone: (71) 99210-9164</p>
             </div>
             <div class="team-member">
-                <img src="https://web.whatsapp.com/b053812e-4e0d-4801-a96e-dd61f6105cdd" alt="Carolina Diniz">
+                <img src="./Photos/carol.jpeg" alt="Carolina Diniz">
                 <h4>Carolina Diniz</h4>
                 <p><a href="https://www.linkedin.com/in/carolina-diniz-2b80701a4" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (31) 99238-0507</p>
             </div>
             <div class="team-member">
-                <img src="https://web.whatsapp.com/ac7e2eba-6209-4133-93fc-8ef7a32bfafa" alt="Fernando Batista">
+                <img src="./Photos/fernando.jpeg" alt="Fernando Batista">
                 <h4>Fernando Batista</h4>
                 <p><a href="https://www.linkedin.com/in/fernandobatistads" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (11) 98410-1047</p>
             </div>
             <div class="team-member">
-                <img src="https://drive.google.com/uc?export=view&id=1-rIh4JFW-Rb8hC131K_Dd6p-dJ1SZWcB" alt="Antônio Brandenberger">
+                <img src="./Photos/antonio.jpeg" alt="Antônio Brandenberger">
                 <h4>Antônio Brandenberger</h4>
                 <p><a href="https://www.linkedin.com/in/antonio-brandenberger" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (21) 99252-2552</p>
             </div>
             <div class="team-member">
-                <img src="https://web.whatsapp.com/3a20f054-4625-4ed1-b369-5b84eec9fad1" alt="Matheus Marques">
+                <img src="./Photos/matheus.jpeg" alt="Matheus Marques">
                 <h4>Matheus Marques</h4>
                 <p><a href="https://www.linkedin.com/in/matheus-marques-rodrigues" target="_blank">LinkedIn</a></p>
                 <p>Telefone: (31) 99172-3497</p>
