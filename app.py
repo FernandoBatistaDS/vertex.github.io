@@ -39,7 +39,7 @@ st.markdown(
         background-color: var(--bg-primary);
     }
     
-    /* Header */
+    /* Header com navegação integrada */
     .header {
         background: linear-gradient(135deg, var(--vertex-brand-green), #004f3a);
         padding: 1.5rem 2rem;
@@ -65,6 +65,24 @@ st.markdown(
         color: var(--text-primary);
         font-size: 28px;
         font-weight: 700;
+    }
+    
+    /* Navegação no header */
+    .nav-menu {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .nav-menu a {
+        color: var(--text-primary);
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+    
+    .nav-menu a:hover {
+        color: var(--vertex-neon-green);
     }
     
     /* Conteúdo */
@@ -142,7 +160,7 @@ st.markdown(
         margin: 20px 0;
     }
     
-    /* Membros da equipe (padrão geral) */
+    /* Membros da equipe */
     .team-member {
         background-color: var(--card-bg);
         padding: 15px;
@@ -172,7 +190,7 @@ st.markdown(
     
     .team-member a {
         text-decoration: none;
-        color: #0077b5; /* cor padrão do LinkedIn */
+        color: #0077b5;
     }
     
     /* Seção do guia */
@@ -240,9 +258,6 @@ st.markdown(
     /* Grade responsiva para a seção da Equipe */
     .grid-container {
         display: grid;
-        /* Ajuste para tornar responsivo:
-           cada card terá no mínimo 250px de largura 
-           e no máximo 1 fração do espaço disponível */
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
         margin-top: 20px;
@@ -252,22 +267,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header
-st.markdown(
-    """
-    <div class="header">
+# Header com navegação integrada
+# Utilizamos colunas para posicionar o logo e o menu de navegação
+col_logo, col_nav = st.columns([2,6])
+with col_logo:
+    st.markdown(
+        """
         <div class="vertex-logo">
             <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" alt="Logo VertexTennis">
             <span class="logo-text">VertexTennis</span>
         </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+        """,
+        unsafe_allow_html=True
+    )
+with col_nav:
+    # Criamos o menu de navegação usando botões horizontais; o valor selecionado é armazenado em session_state
+    if "page" not in st.session_state:
+        st.session_state.page = "Página Inicial"
+    nav = st.radio("", options=["Página Inicial", "Power BI", "Guia de Implementação"], index=["Página Inicial", "Power BI", "Guia de Implementação"].index(st.session_state.page), horizontal=True)
+    st.session_state.page = nav
 
-# Navegação lateral
-st.sidebar.title("Navegação")
-page = st.sidebar.radio("", ("Página Inicial", "Power BI", "Guia de Implementação"))
+# Removemos a navegação lateral, pois agora ela está integrada no header
 
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
@@ -310,7 +330,8 @@ def add_footer():
 # Container principal para conteúdo (para melhor posicionamento do footer)
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
-if page == "Página Inicial":
+# Renderização de páginas com base na navegação integrada
+if st.session_state.page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Velocidade e Qualidade nas Decisões")
     
@@ -412,7 +433,7 @@ if page == "Página Inicial":
         unsafe_allow_html=True
     )
 
-elif page == "Power BI":
+elif st.session_state.page == "Power BI":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Relatório Power BI")
     
@@ -457,7 +478,7 @@ elif page == "Power BI":
         unsafe_allow_html=True
     )
 
-elif page == "Guia de Implementação":
+elif st.session_state.page == "Guia de Implementação":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Guia de Implementação do Power BI")
     
