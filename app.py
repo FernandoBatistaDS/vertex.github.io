@@ -268,8 +268,7 @@ st.markdown(
 )
 
 # Header com navegação integrada
-# Utilizamos colunas para posicionar o logo e o menu de navegação
-col_logo, col_nav = st.columns([2,6])
+col_logo, col_nav = st.columns([2, 6])
 with col_logo:
     st.markdown(
         """
@@ -281,13 +280,20 @@ with col_logo:
         unsafe_allow_html=True
     )
 with col_nav:
-    # Criamos o menu de navegação usando botões horizontais; o valor selecionado é armazenado em session_state
+    # Container flex para centralizar a navegação horizontal e verticalmente
+    st.markdown(
+        """
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        """,
+        unsafe_allow_html=True
+    )
     if "page" not in st.session_state:
         st.session_state.page = "Página Inicial"
-    nav = st.radio("", options=["Página Inicial", "Power BI", "Guia de Implementação"], index=["Página Inicial", "Power BI", "Guia de Implementação"].index(st.session_state.page), horizontal=True)
+    nav = st.radio("", options=["Página Inicial", "Power BI", "Guia de Implementação"],
+                   index=["Página Inicial", "Power BI", "Guia de Implementação"].index(st.session_state.page),
+                   horizontal=True)
     st.session_state.page = nav
-
-# Removemos a navegação lateral, pois agora ela está integrada no header
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
@@ -330,7 +336,6 @@ def add_footer():
 # Container principal para conteúdo (para melhor posicionamento do footer)
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
-# Renderização de páginas com base na navegação integrada
 if st.session_state.page == "Página Inicial":
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.title("Velocidade e Qualidade nas Decisões")
@@ -350,8 +355,8 @@ if st.session_state.page == "Página Inicial":
             **Bem-vindo ao Tour do App!**  
             Explore as seções abaixo:
             - **Página Inicial:** Resumo e apresentação geral da nova ferramenta.
-            - **Dashboard Power BI:** Visualização interativa dos dados e algumas das análises provenientes dele.
-            - **Guia de Implementação:** Documentação completa para impulsionar a adoção da solução e descrever os processos de governança.
+            - **Dashboard Power BI:** Visualização interativa dos dados e análises.
+            - **Guia de Implementação:** Documentação completa para impulsionar a adoção da solução.
             
             Navegue por cada seção e descubra como seus dados podem impulsionar seu negócio!
             """
