@@ -416,10 +416,10 @@ if st.session_state.page == "Página Inicial":
                 <p>Telefone: (31) 99172-3497</p>
             </div>
             <div class="team-member">
-                <img src="https://via.placeholder.com/100" alt="Nome 6">
-                <h4>Nome 6</h4>
-                <p><a href="https://www.linkedin.com/in/nome6" target="_blank">LinkedIn</a></p>
-                <p>Telefone: (00) 00000-0000</p>
+                <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/felipe.jpeg?raw=true" alt="Felipe Acauã">
+                <h4>Felipe Acauã</h4>
+                <p><a href="http://www.linkedin.com/in/felipe-acau%C3%A3-88101021b" target="_blank">LinkedIn</a></p>
+                <p>Telefone: (14) 99603-9135</p>
             </div>
             <div class="team-member">
                 <img src="https://via.placeholder.com/100" alt="Nome 7">
