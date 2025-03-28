@@ -166,7 +166,7 @@ st.markdown(
     
     /* Sidebar com imagem de background */
     [data-testid="stSidebar"] {
-        background-image: url("https://example.com/path/to/your/image.jpg");
+        background-image: url("https://vertextennis.com/wp-content/uploads/2024/11/vertex_img07.webp");
         background-size: cover;
         background-position: center;
     }
@@ -309,7 +309,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown('</div>', unsafe_allow_html=True)  <!-- Fim da seção Introdução -->
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ──────────────── Seção 2: PBI e Análises ────────────────
 st.markdown('<div class="content-section" id="pbi-analises">', unsafe_allow_html=True)
@@ -349,7 +349,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown('</div>', unsafe_allow_html=True)  <!-- Fim da seção PBI e Análises -->
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ──────────────── Seção 3: Guia de Implementação ────────────────
 st.markdown('<div class="content-section" id="guia">', unsafe_allow_html=True)
@@ -400,9 +400,9 @@ with st.spinner("Carregando guia de implementação..."):
             )
     except Exception as e:
         st.error(f"Erro ao carregar o PDF: {e}")
-st.markdown('</div>', unsafe_allow_html=True)  <!-- Fim da seção Guia -->
+st.markdown('</div>', unsafe_allow_html=True) 
 
-st.markdown('</div>', unsafe_allow_html=True)  <!-- Fim do content-wrapper -->
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown(
