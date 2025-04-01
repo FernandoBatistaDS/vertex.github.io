@@ -219,7 +219,6 @@ st.markdown(
     <div class="header">
         <div class="vertex-logo">
             <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" alt="Logo VertexTennis">
-            <span class="logo-text">VertexTennis</span>
             <h4> Implantação PBI Comercial - Vertex </h4>
         </div>
     </div>
