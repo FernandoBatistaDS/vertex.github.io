@@ -231,11 +231,21 @@ st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
 # ──────────────── Seção 1: Introdução ────────────────
 st.markdown('<div class="content-section" id="introducao">', unsafe_allow_html=True)
-st.title("Velocidade e Qualidade nas Decisões")
+st.title("Transformando seus Dados em Decisões")
 st.subheader("Introdução")
 st.markdown("""
-Na Vertex Tennis, transformamos dados em decisões estratégicas que impulsionam o desempenho e a inovação. 
-Nosso compromisso com a qualidade se reflete em cada aspecto deste app – uma ferramenta desenvolvida para oferecer insights poderosos e uma experiência de navegação intuitiva.
+Na Vertex Tennis, dados se tornam decisões estratégicas que impulsionam o desempenho e a inovação. Isso não é novidade.
+Com o objetivo de darmos mais um passo e melhorar ainda mais essa realidade, estamos implementando o Power BI como uma nova ferramenta no fluxo.  
+
+## Estrutura do Site  
+
+Nesse site você encontrará as principáis informações sobre uso, insights, manutenção e governança, organizado nos seguintes módulos:  
+
+- **Introdução**: Uma breve descrição do objetivo da implantação com um vídeo explicativo.  
+- **Dashboard**: Exibe informações principais e métricas relevantes. Além de apresentar uma lista de insghts logo abaixo.  
+- **Guia de Implementação**: Toda a explicação relacionada as licenças necessárias, suporte e manutenção da ferramenta.  
+
+No caso de alguma dúvida específica, não exite em entrar em contato com nossa equipe.
 """)
 
 # Vídeo incorporado
@@ -349,7 +359,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # ──────────────── Seção 3: Guia de Implementação ────────────────
 st.markdown('<div class="content-section" id="guia">', unsafe_allow_html=True)
-st.title("Guia de Implementação do Power BI")
+st.title("Guia de Implementação")
 
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
