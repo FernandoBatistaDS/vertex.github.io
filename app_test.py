@@ -60,7 +60,7 @@ st.markdown(
         font-weight: 700;
     }
     
-    /* Seções de conteúdo padrão */
+    /* Seções de conteúdo */
     .content-section {
         padding: 2rem 1rem;
         background-color: var(--bg-primary);
@@ -68,15 +68,6 @@ st.markdown(
     
     h1, h2, h3, h4, h5 {
         color: var(--text-primary);
-    }
-    
-    /* Seção específica para Relatório Power BI */
-    .pbi-section {
-        background-color: #FFFFFF; /* Fundo branco */
-        color: #000000;            /* Fonte preta */
-        padding: 2rem 1rem;
-        border-radius: 8px;
-        margin: 20px 0;
     }
     
     /* Vídeo */
@@ -194,28 +185,99 @@ st.markdown(
 # Container principal para todo o conteúdo
 st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
 
-# ──────────────── Seção 1: Introdução (mantém o background padrão) ────────────────
+# ──────────────── Seção 1: Introdução ────────────────
 st.markdown('<div class="content-section" id="introducao">', unsafe_allow_html=True)
 st.title("Transformando seus Dados em Decisões")
 st.subheader("Introdução")
 st.markdown("""
-Na Vertex Tennis, dados se tornam decisões estratégicas que impulsionam o desempenho e a inovação.  
-Com o objetivo de darmos mais um passo e melhorar ainda mais essa realidade, estamos implementando o Power BI como uma nova ferramenta no fluxo.
+Na Vertex Tennis, dados se tornam decisões estratégicas que impulsionam o desempenho e a inovação. Isso não é novidade.
+Com o objetivo de darmos mais um passo e melhorar ainda mais essa realidade, estamos implementando o Power BI como uma nova ferramenta no fluxo.  
 
 ## Estrutura do Site  
 
-Nesse site você encontrará as principais informações sobre uso, insights, manutenção e governança, organizado nos seguintes módulos:  
+Nesse site você encontrará as principáis informações sobre uso, insights, manutenção e governança, organizado nos seguintes módulos:  
 
 - **Introdução**: Uma breve descrição do objetivo da implantação com um vídeo explicativo.  
-- **Dashboard**: Exibe informações principais e métricas relevantes, além de apresentar uma lista de insights logo abaixo.  
-- **Guia de Implementação**: Toda a explicação relacionada às licenças necessárias, suporte e manutenção da ferramenta.  
+- **Dashboard**: Exibe informações principais e métricas relevantes. Além de apresentar uma lista de insghts logo abaixo.  
+- **Guia de Implementação**: Toda a explicação relacionada as licenças necessárias, suporte e manutenção da ferramenta.  
 
-No caso de alguma dúvida específica, não hesite em entrar em contato com nossa equipe.
+No caso de alguma dúvida específica, não exite em entrar em contato com nossa equipe.
 """)
+
+# Vídeo incorporado
+st.subheader("Resumo e Apresentação")
+st.markdown("""
+Veja aqui como é o funcionamento do relatório em Power Bi e como ele irá sanar algumas das suas principáis dores do cotidiano. 
+Além disso, conheça a equipe da Insight Hunters, que estará atuando em parceria com a Vertex nessa etapa de implementação: 
+""")
+st.markdown(
+    """
+    <div class="video-container">
+        <iframe width="100%" height="400" 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Equipe Insight Hunters
+st.subheader("Insight Hunters - Conheça nosso time:")
+st.markdown(
+    """
+    <div class="grid-container">
+        <div class="team-member">
+            <img src="https://lh3.googleusercontent.com/a/AGNmyxZ6qSVDtB856uLoGdIQJoPKY712zFFxXm9oj-xZ1g=s96-c" alt="Gabriel Penha">
+            <h4>Gabriel Penha</h4>
+            <p><a href="https://www.linkedin.com/in/gabriel4210" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (71) 99210-9164</p>
+        </div>
+        <div class="team-member">
+            <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/carol.jpeg?raw=true" alt="Carolina Diniz">
+            <h4>Carolina Diniz</h4>
+            <p><a href="https://www.linkedin.com/in/carolina-diniz-2b80701a4" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (31) 99238-0507</p>
+        </div>
+        <div class="team-member">
+            <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/fernando.jpeg?raw=true" alt="Fernando Batista">
+            <h4>Fernando Batista</h4>
+            <p><a href="https://www.linkedin.com/in/fernandobatistads" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (11) 98410-1047</p>
+        </div>
+        <div class="team-member">
+            <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/antonio.jpeg?raw=true" alt="Antônio Brandenberger">
+            <h4>Antônio Brandenberger</h4>
+            <p><a href="https://www.linkedin.com/in/antonio-brandenberger" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (21) 99252-2552</p>
+        </div>
+        <div class="team-member">
+            <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/matheus.jpeg?raw=true" alt="Matheus Marques">
+            <h4>Matheus Marques</h4>
+            <p><a href="https://www.linkedin.com/in/matheus-marques-rodrigues" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (31) 99172-3497</p>
+        </div>
+        <div class="team-member">
+            <img src="https://github.com/Gabriel4210/Vertex_App/blob/main/Photos/felipe.jpeg?raw=true" alt="Felipe Acauã">
+            <h4>Felipe Acauã</h4>
+            <p><a href="http://www.linkedin.com/in/felipe-acau%C3%A3-88101021b" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (14) 99603-9135</p>
+        </div>
+        <div class="team-member">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQFrJJGgZBPrQg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1708985390534?e=1749081600&v=beta&t=XfwgWyu_AGypXeYIC8WZb6zqotvDnz9vxMXCd2GfAiQ" alt="Wendell Pedra">
+            <h4>Wendell Pedra</h4>
+            <p><a href="https://www.linkedin.com/in/wendellgpedra/" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (11) 99421-5743</p>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ──────────────── Seção 2: Relatório Power BI (fundo branco e fonte preta) ────────────────
-st.markdown('<div class="pbi-section" id="pbi">', unsafe_allow_html=True)
+# ──────────────── Seção 2: PBI e Análises ────────────────
 st.title("Relatório Power BI")
 st.subheader("Faça suas análises")
 st.markdown(
@@ -230,7 +292,13 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.subheader("Insights Extraídos")
+st.subheader("Insghts Extraídos")
+st.markdown(
+    """
+    Abaixo estão algumas das análises destacadas pelo time da Insight Hunters:
+    """,
+    unsafe_allow_html=True
+)
 st.markdown(
     """
     <div class="analysis-card">
