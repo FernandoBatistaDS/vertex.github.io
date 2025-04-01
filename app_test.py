@@ -250,6 +250,10 @@ No caso de alguma dúvida específica, não exite em entrar em contato com nossa
 
 # Vídeo incorporado
 st.subheader("Resumo e Apresentação")
+st.markdown("""
+Veja aqui como é o funcionamento do relatório em Power Bi e como ele irá sanar algumas das suas principáis dores do cotidiano. 
+Além disso, conheça a equipe da Insight Hunters, que estará atuando em parceria com a Vertex nessa etapa de implementação: 
+""")
 st.markdown(
     """
     <div class="video-container">
@@ -265,7 +269,7 @@ st.markdown(
 )
 
 # Equipe Insight Hunters
-st.subheader("Equipe da Insight Hunters")
+st.subheader("Insight Hunters - Conheça nosso time:")
 st.markdown(
     """
     <div class="grid-container">
@@ -320,7 +324,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 # ──────────────── Seção 2: PBI e Análises ────────────────
 st.markdown('<div class="content-section" id="pbi-analises">', unsafe_allow_html=True)
 st.title("Relatório Power BI")
-st.subheader("Dashboard Interativo")
+st.subheader("Faça suas análises")
 st.markdown(
     """
     <div style="background-color: var(--card-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -333,7 +337,13 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.subheader("Análises Extraídas")
+st.subheader("Insghts Extraídos")
+st.markdown(
+    """
+    Abaixo estão algumas das análises destacadas pelo time da Insight Hunters:
+    """,
+    unsafe_allow_html=True
+)
 st.markdown(
     """
     <div class="analysis-card">
