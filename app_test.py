@@ -220,6 +220,7 @@ st.markdown(
         <div class="vertex-logo">
             <img src="https://vertextennis.com/wp-content/uploads/2024/11/logo-vertex.svg" alt="Logo VertexTennis">
             <span class="logo-text">VertexTennis</span>
+            <h4> Implantação PBI Comercial - Vertex </h4>
         </div>
     </div>
     """,
@@ -296,16 +297,10 @@ st.markdown(
             <p>Telefone: (14) 99603-9135</p>
         </div>
         <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 7">
-            <h4>Nome 7</h4>
-            <p><a href="https://www.linkedin.com/in/nome7" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
-        </div>
-        <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Nome 8">
-            <h4>Nome 8</h4>
-            <p><a href="https://www.linkedin.com/in/nome8" target="_blank">LinkedIn</a></p>
-            <p>Telefone: (00) 00000-0000</p>
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQFrJJGgZBPrQg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1708985390534?e=1749081600&v=beta&t=XfwgWyu_AGypXeYIC8WZb6zqotvDnz9vxMXCd2GfAiQ" alt="Wendell Pedra">
+            <h4>Wendell Pedra</h4>
+            <p><a href="https://www.linkedin.com/in/wendellgpedra/" target="_blank">LinkedIn</a></p>
+            <p>Telefone: (11) 99421-5743</p>
         </div>
     </div>
     """,
