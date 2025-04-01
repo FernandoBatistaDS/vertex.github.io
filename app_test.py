@@ -5,7 +5,7 @@ import base64
 # Configuração do app
 st.set_page_config(page_title="App VertexTennis", layout="wide")
 
-# CSS com variáveis de identidade, ajustes e background para a sidebar
+# CSS com variáveis de identidade, ajustes e background para o conteúdo
 st.markdown(
     """
     <style>
@@ -40,7 +40,6 @@ st.markdown(
         align-items: center;
         border-bottom: 2px solid var(--card-border);
         width: 100%;
-        top: 61;
     }
     
     .vertex-logo {
@@ -164,49 +163,6 @@ st.markdown(
         height: 600px;
         border: none;
         background-color: white;
-    }
-    
-    /* Sidebar com imagem de background */
-    [data-testid="stSidebar"] {
-        background-image: url("https://vertextennis.com/wp-content/uploads/2024/11/vertex_img07.webp");
-        background-size: cover;
-        background-position: center;
-    }
-    
-    /* Footer */
-    .footer {
-        background: linear-gradient(135deg, var(--vertex-brand-green), #80d0c7);
-        color: #000;
-        padding: 2rem 0;
-        margin-top: 2rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .footer-grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        padding: 0 1rem;
-    }
-    .footer-col h4 {
-        margin-bottom: 10px;
-    }
-    .footer-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    .footer-list li {
-        margin-bottom: 8px;
-    }
-    .footer-list a {
-        color: #000;
-        text-decoration: none;
-    }
-    .footer-list a:hover {
-        text-decoration: underline;
     }
     </style>
     """,
@@ -419,23 +375,3 @@ with st.spinner("Carregando guia de implementação..."):
 st.markdown('</div>', unsafe_allow_html=True) 
 
 st.markdown('</div>', unsafe_allow_html=True)
-
-# Footer
-st.markdown(
-    """
-    <div class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>VertexTennis</h4>
-                <p>Soluções inovadoras para tênis</p>
-            </div>
-            <div class="footer-col">
-                <p>Na Vertex Tennis, tudo começa com o compromisso de entender e atender as necessidades dos nossos clientes e parceiros.</p>
-                <p>Desenvolvemos nossos produtos com um foco absoluto na qualidade, tecnologia e acessibilidade, criando soluções que alavancam negócios e ampliam o alcance do tênis no Brasil.</p>
-                <p>A identidade visual da Vertex Tennis é a expressão de nossa essência: qualidade, inovação e paixão pelo tênis. Cada elemento — das cores à tipografia — foi pensado para reforçar nossa presença no mercado e garantir uma comunicação clara e impactante. A consistência no uso dessa identidade fortalece a marca e a torna reconhecível em qualquer contexto.</p>
-            </div>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
