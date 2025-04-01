@@ -39,6 +39,9 @@ st.markdown(
         display: flex;
         align-items: center;
         border-bottom: 2px solid var(--card-border);
+        position: fixed;
+        width: 100%;
+        top: 0;
     }
     
     .vertex-logo {
