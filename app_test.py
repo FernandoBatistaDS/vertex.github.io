@@ -96,14 +96,14 @@ st.markdown(
     /* Equipe */
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
         margin-top: 20px;
     }
     
     .team-member {
         background-color: var(--card-bg);
-        padding: 15px;
+        padding: 10px;
         border-radius: 8px;
         border-left: 4px solid var(--vertex-brand-green);
         text-align: center;
