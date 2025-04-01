@@ -278,7 +278,21 @@ st.markdown(
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ──────────────── Seção 2: PBI e Análises ────────────────
-st.markdown('<div class="content-section" id="pbi-analises">', unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .secao-personalizada {
+        background-color: #FFFFFF; /* Fundo branco */
+        color: #000000;            /* Letras pretas */
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown('<div class="secao-personalizada" id="pbi-analises">', unsafe_allow_html=True)
 st.title("Relatório Power BI")
 st.subheader("Faça suas análises")
 st.markdown(
