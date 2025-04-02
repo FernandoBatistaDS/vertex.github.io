@@ -325,6 +325,102 @@ st.markdown('</div>', unsafe_allow_html=True)
 # ──────────────── Seção 3: Guia de Implementação ────────────────
 st.markdown('<div class="content-section" id="guia">', unsafe_allow_html=True)
 st.title("Guia de Implementação")
+st.markdown(
+    """
+    # Guia de Implementação e Governança do Power BI na Vertex
+
+## 1. Introdução
+Este guia apresenta diretrizes para a adoção eficaz do Power BI na Vertex, assegurando seu uso eficiente e garantindo governança sólida. O objetivo é proporcionar valor aos usuários, prevenindo a subutilização da ferramenta ao longo do tempo.
+
+## 2. Objetivos
+- Impulsionar a adoção do Power BI.
+- Garantir governança e segurança dos dados.
+- Definir papéis e responsabilidades de cada usuário.
+- Criar um plano de atualização e manutenção da solução.
+
+## 3. Licenças e Acessos
+A quantidade e tipos de licenças deverão ser analisadas pela Vertex e disponibilizadas de acordo com a quantidade de licenças adquiridas.
+
+O **Power BI Free** não deve ser utilizado para compartilhamento de conteúdo com outros usuários, pois os dados são expostos publicamente, o que pode comprometer informações sensíveis da empresa. Isso inclui dados pessoais de vendedores, protegidos pela Lei Geral de Proteção de Dados Pessoais (LGPD), além de informações estratégicas sobre fornecedores, que poderiam ficar acessíveis à concorrência.
+
+O **Power BI Pro** é adequado à Vertex. As vantagens desse plano são o compartilhamento seguro, a possibilidade de criar workspaces para colaboração em equipe, 8 atualizações diárias dos dados e capacidade de armazenamento de 10 GB por usuário. O valor atualmente é de 10 dólares por usuário/mês. Tanto o desenvolvedor dos dashboards quanto os usuários devem ter a conta Pro para esse compartilhamento.
+
+O **Power BI Premium** não é necessário no presente momento da empresa, sendo recomendada uma avaliação de migração baseada em volume de dados e número de usuários futuramente.
+
+## 3. Papéis e Responsabilidades
+
+### 3.1 TI (Suporte e Governança)
+- Concede acessos e gerencia segurança.
+- Monitora uso e desempenho.
+- Suporta usuários e resolve dúvidas técnicas.
+
+### 3.2 Analistas
+- Criam relatórios e dashboards.
+- Garantem qualidade e confiabilidade dos dados.
+- Utilizam bases externas documentadas e aprovadas pela TI.
+
+### 3.3 Gerentes e Diretores
+- Acompanham KPIs e tomam decisões estratégicas.
+- Podem solicitar novos relatórios via fluxo formal, por e-mail e com cópia para o grupo de gerentes e diretores com informações mínimas, como:
+  - Nome do Relatório Afetado
+  - Justificativa para mudança
+  - Tipos de alteração (ajuste visual, inclusão de novos dados, melhoria de desempenho)
+
+### 3.4 Supervisores e Vendedores
+- Usam dashboards para acompanhar metas.
+- Reportam problemas nos dados.
+- Podem solicitar novos relatórios ou alterações via fluxo formal, por e-mail, conforme descrito no item 3.3 acima.
+
+## 4. Segurança e Controle de Acesso
+- Os dados da empresa não devem ser compartilhados com pessoas não autorizadas.
+- Não é permitido fazer cópia dos dashboards para uso pessoal.
+- Acesso restrito por região (baseado na tabela Employees).
+- Monitoramento de logs no Power BI Service.
+- Implementação de Data Loss Prevention (DLP) para restringir exportação de dados sensíveis.
+- Plano de resposta a incidentes em caso de vazamento ou acesso indevido.
+
+## 5. Compartilhamento de Relatórios
+- Os relatórios serão compartilhados via Power BI Service.
+- Haverá controle de permissões detalhado para evitar exportação indevida.
+- Política clara sobre o uso de impressões em apresentações internas.
+
+## 6. Plano de Atualização e Manutenção
+
+### 6.1 Curto prazo (1 mês)
+- Treinamento básico para usuários.
+- Ajustes na segurança de acessos.
+- Criação dos primeiros dashboards estratégicos.
+
+### 6.2 Médio prazo (2 a 3 meses)
+- Análise das métricas de adoção.
+- Documentação oficial dos relatórios.
+- Automação de importação de bases externas.
+
+### 6.3 Longo prazo (4+ meses)
+- Avaliação da necessidade de migração para Power BI Premium.
+- Evolução contínua dos dashboards conforme feedback e solicitações formalizadas.
+
+## 7. Métricas de Sucesso
+- Taxa de Adoção: Monitoramento de usuários ativos semanalmente.
+- Uso dos Relatórios: Frequência de acesso e identificação de dashboards subutilizados.
+- Tempo Médio de Resolução de Dúvidas: Avaliação da eficiência do suporte.
+- Painel de Governança no Power BI para acompanhamento das métricas.
+
+## 8. Estratégia para Garantir a Adoção
+- Criação de um Grupo de Super Usuários, capacitados para apoiar suas equipes.
+- Calendário de reuniões periódicas para revisão do uso do Power BI e para propor ações caso o uso esteja abaixo do adequado.
+- Dashboard mobile-friendly para acesso facilitado.
+- Gamificação: Reconhecimento para os usuários mais engajados.
+- Comunicação interna: E-mails e eventos para reforçar o uso.
+
+## 9. Conclusão e Próximos Passos
+O guia deve ser seguido por todos os usuários para garantir o sucesso da implementação. Dúvidas podem ser encaminhadas à equipe de TI ou aos Analistas de Vendas.
+
+A primeira análise de adoção será realizada após 3 meses, permitindo ajustes conforme necessário.
+
+    """,
+    unsafe_allow_html=True
+)
 
 # Função para carregar PDF do GitHub
 def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
