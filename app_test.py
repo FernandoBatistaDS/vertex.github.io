@@ -311,8 +311,6 @@ st.markdown('<div class="content-section" id="guia">', unsafe_allow_html=True)
 st.title("Guia de Implementação")
 st.markdown(
     """
-    # Guia de Implementação e Governança do Power BI na Vertex
-
 ## 1. Introdução
 Este guia apresenta diretrizes para a adoção eficaz do Power BI na Vertex, assegurando seu uso eficiente e garantindo governança sólida. O objetivo é proporcionar valor aos usuários, prevenindo a subutilização da ferramenta ao longo do tempo.
 
