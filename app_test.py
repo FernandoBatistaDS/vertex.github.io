@@ -148,22 +148,6 @@ st.markdown(
         font-family: 'Courier New', monospace;
         color: #E0E0E0;
     }
-    
-    /* Visualizador de PDF */
-    .pdf-viewer {
-        background-color: var(--card-bg);
-        border-radius: 8px;
-        padding: 20px;
-        margin: 20px 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    iframe.pdf-frame {
-        width: 100%;
-        height: 600px;
-        border: none;
-        background-color: white;
-    }
     </style>
     """,
     unsafe_allow_html=True
@@ -417,7 +401,6 @@ O **Power BI Premium** não é necessário no presente momento da empresa, sendo
 O guia deve ser seguido por todos os usuários para garantir o sucesso da implementação. Dúvidas podem ser encaminhadas à equipe de TI ou aos Analistas de Vendas.
 
 A primeira análise de adoção será realizada após 3 meses, permitindo ajustes conforme necessário.
-
     """,
     unsafe_allow_html=True
 )
@@ -433,30 +416,10 @@ def load_github_pdf(repo_owner, repo_name, path_to_pdf, branch="main"):
         st.error(f"Erro ao carregar arquivo do GitHub: {e}")
         return None
 
-# Função para exibir PDF em iframe
-def display_pdf(pdf_bytes):
-    base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
-    pdf_display = f'<iframe class="pdf-frame" src="data:application/pdf;base64,{base64_pdf}" type="application/pdf"></iframe>'
-    return pdf_display
-
-repo_owner = "Gabriel4210"
-repo_name = "Vertex_App"
-pdf_path = "guia_implementacao_power_bi.pdf"
-
-st.subheader("Visualizar Documento")
-try:
-    pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
-    if pdf_bytes:
-        st.markdown(display_pdf(pdf_bytes), unsafe_allow_html=True)
-    else:
-        st.info("PDF indisponível no momento.")
-except Exception as e:
-    st.error(f"Erro ao processar o guia de implementação: {e}")
-    st.info("Por favor, verifique se o arquivo está disponível no repositório GitHub.")
-
+# Botão de download do PDF
 with st.spinner("Carregando guia de implementação..."):
     try:
-        pdf_bytes = load_github_pdf(repo_owner, repo_name, pdf_path)
+        pdf_bytes = load_github_pdf("Gabriel4210", "Vertex_App", "guia_implementacao_power_bi.pdf")
         st.subheader("Download do Documento Completo")
         if pdf_bytes:
             st.download_button(
@@ -465,6 +428,8 @@ with st.spinner("Carregando guia de implementação..."):
                 file_name="guia_implementacao_power_bi.pdf",
                 mime="application/pdf"
             )
+        else:
+            st.info("PDF indisponível no momento.")
     except Exception as e:
         st.error(f"Erro ao carregar o PDF: {e}")
 st.markdown('</div>', unsafe_allow_html=True) 
